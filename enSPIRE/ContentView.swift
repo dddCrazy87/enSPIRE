@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  enSPIRE
-//
-//  Created by 許昀韋 on 2024/3/19.
-//
-
 import SwiftUI
 
 struct ContentView: View {
