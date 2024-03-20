@@ -16,6 +16,8 @@
 		42B61D5B2BA940DB0058A48D /* enSPIREUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D5A2BA940DB0058A48D /* enSPIREUITests.swift */; };
 		42B61D5D2BA940DB0058A48D /* enSPIREUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D5C2BA940DB0058A48D /* enSPIREUITestsLaunchTests.swift */; };
 		42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */; };
+		F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */; };
+		F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A62BAB1CD500C499C0 /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		42B61D5A2BA940DB0058A48D /* enSPIREUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIREUITests.swift; sourceTree = "<group>"; };
 		42B61D5C2BA940DB0058A48D /* enSPIREUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIREUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPiecesView.swift; sourceTree = "<group>"; };
+		F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		F5BC97A62BAB1CD500C499C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				42B61D412BA940DA0058A48D /* ContentView.swift */,
 				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
 				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
+				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
+				F5BC97A62BAB1CD500C499C0 /* GridView.swift */,
 				42B61D432BA940DB0058A48D /* Assets.xcassets */,
 				42B61D452BA940DB0058A48D /* Preview Content */,
 			);
@@ -264,8 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B61D422BA940DA0058A48D /* ContentView.swift in Sources */,
+				F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */,
 				42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */,
 				42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */,
+				F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */,
 				4229B29D2BAAC3B300183BCE /* UserProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
