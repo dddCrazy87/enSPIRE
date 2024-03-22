@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4229B29D2BAAC3B300183BCE /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229B29C2BAAC3B300183BCE /* UserProfileView.swift */; };
 		428F06E12BAD25D50030C286 /* MindMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F06E02BAD25D50030C286 /* MindMapView.swift */; };
+		428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F06E22BAD283E0030C286 /* MindMapData.swift */; };
 		42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */; };
 		42B61D422BA940DA0058A48D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D412BA940DA0058A48D /* ContentView.swift */; };
 		42B61D442BA940DB0058A48D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B61D432BA940DB0058A48D /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		4229B29C2BAAC3B300183BCE /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		428F06E02BAD25D50030C286 /* MindMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapView.swift; sourceTree = "<group>"; };
+		428F06E22BAD283E0030C286 /* MindMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapData.swift; sourceTree = "<group>"; };
 		42B61D3C2BA940DA0058A48D /* enSPIRE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enSPIRE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIREApp.swift; sourceTree = "<group>"; };
 		42B61D412BA940DA0058A48D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */,
 				42B61D412BA940DA0058A48D /* ContentView.swift */,
 				428F06E02BAD25D50030C286 /* MindMapView.swift */,
+				428F06E22BAD283E0030C286 /* MindMapData.swift */,
 				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
 				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
 				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
@@ -276,6 +279,7 @@
 				F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */,
 				42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */,
 				42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */,
+				428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */,
 				F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */,
 				428F06E12BAD25D50030C286 /* MindMapView.swift in Sources */,
 				4229B29D2BAAC3B300183BCE /* UserProfileView.swift in Sources */,
