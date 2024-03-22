@@ -24,6 +24,50 @@ struct MindMapView: View {
         
         ZStack {
             
+            ZStack {
+                NodeView(node: rootNode, selectedNode: $selectedNode)
+                Circle()
+                    .frame(width: Double(rootNodeTextSize)*25)
+                    .foregroundColor(.yellow)
+                
+                Text(rootNodeText)
+                    .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
+                    .onAppear {
+                        withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
+                            self.isBlinking.toggle()
+                        }
+                    }
+                    .onTapGesture {
+                        self.selectedNode = self.rootNode
+                        print(self.selectedNode?.text)
+                    }
+            }
+            .padding()
+            .frame(width: 380 * curScale, height: 720 * curScale)
+            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
+            .scaleEffect(gestureScale * curScale)
+            .gesture(
+                SimultaneousGesture(
+                    DragGesture()
+                        .updating($gestureOffset, body: { (value, state, _) in
+                            state = value.translation
+                        })
+                        .onEnded({ (value) in
+                            self.curPos.height += value.translation.height
+                            self.curPos.width += value.translation.width
+                        }),
+                    MagnificationGesture()
+                        .updating($gestureScale, body: { (value, state, _) in
+                            state = value
+                        })
+                        .onEnded({ (value) in
+                            self.curScale *= value
+                        })
+                )
+            )
+            
+            
             VStack {
                 Spacer()
                 if isFirstNode {
@@ -81,50 +125,6 @@ struct MindMapView: View {
                     }
                 }
             }
-            
-            ZStack {
-                NodeView(node: rootNode, selectedNode: $selectedNode)
-                Circle()
-                    .frame(width: Double(rootNodeTextSize)*25)
-                    .foregroundColor(.yellow)
-                
-                Text(rootNodeText)
-                    .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
-                    .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
-                            self.isBlinking.toggle()
-                        }
-                    }
-                    .onTapGesture {
-                        self.selectedNode = self.rootNode
-                        print(self.selectedNode?.text)
-                    }
-            }
-            .padding()
-            .frame(width: 380 * curScale, height: 720 * curScale)
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-            .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
-            .scaleEffect(gestureScale * curScale)
-            .gesture(
-                SimultaneousGesture(
-                    DragGesture()
-                        .updating($gestureOffset, body: { (value, state, _) in
-                            state = value.translation
-                        })
-                        .onEnded({ (value) in
-                            self.curPos.height += value.translation.height
-                            self.curPos.width += value.translation.width
-                        }),
-                    MagnificationGesture()
-                        .updating($gestureScale, body: { (value, state, _) in
-                            state = value
-                        })
-                        .onEnded({ (value) in
-                            self.curScale *= value
-                        })
-                )
-            )
-            
         }
     }
     
