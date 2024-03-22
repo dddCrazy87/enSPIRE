@@ -17,6 +17,7 @@ struct ContentView: View {
         NavigationStack {
                 
             VStack {
+                
                 switch curPage {
     //                case .login:
     //                    <#code#>
