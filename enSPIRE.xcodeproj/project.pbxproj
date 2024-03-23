@@ -21,6 +21,8 @@
 		42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */; };
 		F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */; };
 		F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A62BAB1CD500C499C0 /* GridView.swift */; };
+		F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */; };
+		F5BC97AF2BAE6D3900C499C0 /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPiecesView.swift; sourceTree = "<group>"; };
 		F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		F5BC97A62BAB1CD500C499C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 			children = (
 				42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */,
 				42B61D412BA940DA0058A48D /* ContentView.swift */,
+				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
+				F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */,
 				428F06E02BAD25D50030C286 /* MindMapView.swift */,
 				428F06E22BAD283E0030C286 /* MindMapData.swift */,
 				428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */,
@@ -280,11 +286,13 @@
 			files = (
 				42B61D422BA940DA0058A48D /* ContentView.swift in Sources */,
 				F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */,
+				F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */,
 				42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */,
 				42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */,
 				428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */,
 				F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */,
 				428986642BADE8CA00FE8DB8 /* MindMapNodeView.swift in Sources */,
+				F5BC97AF2BAE6D3900C499C0 /* ChatRoomView.swift in Sources */,
 				428F06E12BAD25D50030C286 /* MindMapView.swift in Sources */,
 				4229B29D2BAAC3B300183BCE /* UserProfileView.swift in Sources */,
 			);

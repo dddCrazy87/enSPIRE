@@ -50,7 +50,7 @@ struct GridView: View {
                 LazyVStack(spacing: spacing){
                     ForEach(column.gridItems){ gridItem in
                         Rectangle()
-                            .foregroundStyle(Color.blue)
+                            .foregroundStyle(Color.yellow)
                             .frame(height: gridItem.height)
                             .overlay {
                                 Text(gridItem.title)

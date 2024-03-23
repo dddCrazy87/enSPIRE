@@ -25,8 +25,8 @@ struct ContentView: View {
     //                    <#code#>
                 case .mindmap:
                     MindMapView()
-    //                case .chat:
-    //                    <#code#>
+                case .chat:
+                    ChatView()
                 case .gallery:
                     GalleryView()
                 case .profile:

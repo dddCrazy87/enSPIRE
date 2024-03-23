@@ -11,6 +11,7 @@ struct GalleryView: View {
         return ScrollView{
             GridView(gridItems: gridItems, numberOfColumns: 2)
         }
+        .padding()
     }
 }
     
