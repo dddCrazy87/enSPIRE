@@ -30,7 +30,7 @@ struct NodeView_Down: View {
             
             HStack {
                 ForEach(node.children) { childNode in
-                    NodeView_Top(node: childNode,  selectedNode: self.$selectedNode)
+                    NodeView_Down(node: childNode,  selectedNode: self.$selectedNode)
                         .padding(5)
                 }
             }
@@ -50,7 +50,7 @@ struct NodeView_Top: View {
             
             HStack {
                 ForEach(node.children) { childNode in
-                    NodeView_Down(node: childNode,  selectedNode: self.$selectedNode)
+                    NodeView_Top(node: childNode,  selectedNode: self.$selectedNode)
                         .padding(5)
                 }
             }
