@@ -24,23 +24,43 @@ struct MindMapView: View {
         
         ZStack {
             
-            ZStack {
-                NodeView(node: rootNode, selectedNode: $selectedNode)
-                Circle()
-                    .frame(width: Double(rootNodeTextSize)*25)
-                    .foregroundColor(.yellow)
-                
-                Text(rootNodeText)
-                    .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
-                    .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
-                            self.isBlinking.toggle()
+            VStack {
+                HStack {
+                    ForEach(rootNode.children.indices, id: \.self) { index in
+                        let childNode = self.rootNode.children[index]
+                        if index % 2 == 0 {
+                            NodeView_Top(node: childNode, selectedNode: $selectedNode)
+                                .padding()
                         }
                     }
-                    .onTapGesture {
-                        self.selectedNode = self.rootNode
-                        print(self.selectedNode?.text)
+                }
+                
+                ZStack {
+                    Circle()
+                        .frame(width: Double(rootNodeTextSize)*20)
+                        .foregroundColor(.yellow)
+                    
+                    Text(rootNodeText)
+                        .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
+                                self.isBlinking.toggle()
+                            }
+                        }
+                        .onTapGesture {
+                            self.selectedNode = self.rootNode
+                            print(self.selectedNode?.text)
+                        }
+                }
+                HStack {
+                    ForEach(rootNode.children.indices, id: \.self) { index in
+                        let childNode = self.rootNode.children[index]
+                        if index % 2 == 1 {
+                            NodeView_Down(node: childNode, selectedNode: $selectedNode)
+                                .padding()
+                        }
                     }
+                }
             }
             .padding()
             .frame(width: 380 * curScale, height: 720 * curScale)
