@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MessageView: View {
-    private var isFromCurrentUser: Bool = true
+    var message: Message
     
     var body: some View {
-        if isFromCurrentUser {
+        if message.isFromCurrentUser() {
             VStack(alignment: .trailing){
                 HStack(alignment: .top)
                 {
-                    Text("Thank you!")
+                    Text(message.text)
                         .font(.system(size: 14))
                         .foregroundStyle(Color.black)
                         .frame(alignment: .topTrailing)
@@ -30,12 +30,8 @@ struct MessageView: View {
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 }
                 .frame(maxWidth: 260, alignment: .trailing)
-                .padding(.vertical, 10)
                 .padding(.leading, 100)
             }
-            .frame(maxWidth: .infinity)
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-            .padding()
         }
         else{
             VStack(alignment: .leading){
@@ -47,7 +43,7 @@ struct MessageView: View {
                         .padding(10)
                         .background(Color.black)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    Text("Hello! How are You today. If there is any troubles just Text me. I will help you!")
+                    Text(message.text)
                         .font(.system(size: 14))
                         .foregroundStyle(Color.white)
                         .frame(alignment: .topLeading)
@@ -57,14 +53,12 @@ struct MessageView: View {
                         
                 }
                 .frame(maxWidth: 260, alignment: .leading)
-                .padding(.vertical, 10)
                 .padding(.trailing, 100)
-                .border(Color.black)
             }
         }
     }
 }
 
 #Preview {
-    MessageView()
+    MessageView(message: Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data()))
 }
