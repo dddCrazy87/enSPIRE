@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct ChatRoomView: View {
+    @State private var message: String = ""
+    @FocusState private var isFocused: Bool
+    private var sendMessage: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("使用者名稱")
+                .padding()
+                .font(.title)
+            ScrollView{
+                MessageView()
+            }
+            HStack{
+                TextField(
+                        "Message",
+                        text: $message
+                )
+                .textFieldStyle(.roundedBorder)
+                .padding()
+                .focused($isFocused)
+                
+                    
+                Button {
+                    isFocused = false
+                    print("send")
+                    
+                } label: {
+                    Image(systemName: "paperplane")
+                }
+            }
+            .padding()
+        }
+        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+        
     }
 }
 
