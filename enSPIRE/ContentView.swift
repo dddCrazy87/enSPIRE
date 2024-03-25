@@ -41,25 +41,37 @@ struct ContentView: View {
                     Button {
                         curPage = PageController.mindmap
                     } label: {
-                        Image(systemName: "plus")
+                        Image("MindmapIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
                     Spacer()
                     Button {
                         curPage = PageController.chat
                     } label: {
-                        Image(systemName: "plus")
+                        Image("ChatIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
                     Spacer()
                     Button {
                         curPage = PageController.gallery
                     } label: {
-                        Image(systemName: "plus")
+                        Image("GalleryIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
                     Spacer()
                     Button {
                         curPage = PageController.profile
                     } label: {
-                        Image(systemName: "plus")
+                        Image("PersonIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
                     }
                     Spacer()
                 }

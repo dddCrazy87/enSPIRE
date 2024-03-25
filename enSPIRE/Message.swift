@@ -15,6 +15,6 @@ struct Message:Identifiable {
     let creatAt: Data
     
     func isFromCurrentUser() -> Bool{
-        return true
+        return false
     }
 }

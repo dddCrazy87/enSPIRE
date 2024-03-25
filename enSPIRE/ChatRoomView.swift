@@ -13,6 +13,10 @@ class ChatRoomViewModle: ObservableObject {
     @Published var messagesData = [
        Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data()),
        Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data()),
+       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data()),Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data()),
+       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data()),
+       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data()),Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data()),
+       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data()),
        Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data())
     ]
 }
@@ -30,6 +34,7 @@ struct ChatRoomView: View {
                 .padding()
                 .font(.title)
             ScrollView{
+                Spacer()
                 VStack(spacing: 10) {
                     ForEach(chatRoomViewModel.messagesData){ message in
                         MessageView(message: message)
@@ -37,11 +42,13 @@ struct ChatRoomView: View {
                 }
                 MessageView(message: Message(UserId: "123", text: "等等 我之後再說", photoURL: "", creatAt: Data()))
             }
+            .padding()
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
             HStack{
                 TextField(
                         "Message",
-                        text: $message
+                        text: $message,
+                        axis: .vertical
                 )
                 .textFieldStyle(.roundedBorder)
                 .padding()
@@ -54,6 +61,7 @@ struct ChatRoomView: View {
                     
                 } label: {
                     Image(systemName: "paperplane")
+                        .foregroundStyle(Color.black)
                 }
             }
             .padding(.horizontal)

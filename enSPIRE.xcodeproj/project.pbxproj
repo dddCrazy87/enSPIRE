@@ -13,7 +13,6 @@
 		428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F06E22BAD283E0030C286 /* MindMapData.swift */; };
 		42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */; };
 		42B61D422BA940DA0058A48D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D412BA940DA0058A48D /* ContentView.swift */; };
-		42B61D442BA940DB0058A48D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B61D432BA940DB0058A48D /* Assets.xcassets */; };
 		42B61D472BA940DB0058A48D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B61D462BA940DB0058A48D /* Preview Assets.xcassets */; };
 		42B61D512BA940DB0058A48D /* enSPIRETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D502BA940DB0058A48D /* enSPIRETests.swift */; };
 		42B61D5B2BA940DB0058A48D /* enSPIREUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D5A2BA940DB0058A48D /* enSPIREUITests.swift */; };
@@ -25,6 +24,7 @@
 		F5BC97AF2BAE6D3900C499C0 /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */; };
 		F5BC97B12BAE8CD000C499C0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97B02BAE8CD000C499C0 /* MessageView.swift */; };
 		F5BC97B32BAEAEE100C499C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97B22BAEAEE100C499C0 /* Message.swift */; };
+		F5BC982B2BB1B1DE00C499C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		42B61D3C2BA940DA0058A48D /* enSPIRE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enSPIRE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIREApp.swift; sourceTree = "<group>"; };
 		42B61D412BA940DA0058A48D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		42B61D432BA940DB0058A48D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42B61D462BA940DB0058A48D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42B61D4C2BA940DB0058A48D /* enSPIRETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = enSPIRETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B61D502BA940DB0058A48D /* enSPIRETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIRETests.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		F5BC97B02BAE8CD000C499C0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		F5BC97B22BAEAEE100C499C0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
 				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
 				F5BC97A62BAB1CD500C499C0 /* GridView.swift */,
-				42B61D432BA940DB0058A48D /* Assets.xcassets */,
+				F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */,
 				42B61D452BA940DB0058A48D /* Preview Content */,
 			);
 			path = enSPIRE;
@@ -264,8 +264,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BC982B2BB1B1DE00C499C0 /* Assets.xcassets in Resources */,
 				42B61D472BA940DB0058A48D /* Preview Assets.xcassets in Resources */,
-				42B61D442BA940DB0058A48D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

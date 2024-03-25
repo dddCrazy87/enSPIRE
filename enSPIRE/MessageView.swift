@@ -22,12 +22,7 @@ struct MessageView: View {
                         .padding()
                         .background(Color.yellow)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
-                    Image(systemName: "person.fill")
-                        .font(.system(size: 15))
-                        .foregroundStyle(Color.black)
-                        .padding(10)
-                        .background(Color.yellow)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .shadow(radius: 1.5)
                 }
                 .frame(maxWidth: 260, alignment: .trailing)
                 .padding(.leading, 100)
@@ -37,19 +32,23 @@ struct MessageView: View {
             VStack(alignment: .leading){
                 HStack
                 {
-                    Image(systemName: "person.fill")
+                    Image("PersonIcon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
                         .font(.system(size: 15))
                         .foregroundStyle(Color.yellow)
-                        .padding(10)
+                        .padding(8)
                         .background(Color.black)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     Text(message.text)
                         .font(.system(size: 14))
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.black)
                         .frame(alignment: .topLeading)
                         .padding()
-                        .background(Color.black)
+                        .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .shadow(radius: 1.5)
                         
                 }
                 .frame(maxWidth: 260, alignment: .leading)
