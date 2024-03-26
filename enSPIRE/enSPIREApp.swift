@@ -4,7 +4,7 @@ import SwiftUI
 struct enSPIREApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchScreenView()
         }
     }
 }
