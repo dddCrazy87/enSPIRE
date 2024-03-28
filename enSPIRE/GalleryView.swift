@@ -8,14 +8,20 @@ struct GalleryView: View {
             let randomHeight = CGFloat.random(in: 80 ... 400)
             gridItems.append(GridItem(height: randomHeight, title: String(i)))
         }
-        return ScrollView{
-            GridView(gridItems: gridItems, numberOfColumns: 2)
+        return NavigationStack {
+            ScrollView{
+                GridView(gridItems: gridItems, numberOfColumns: 2)
+            }
+            .padding()
         }
-        .padding()
+        .navigationTitle("展覽室")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
     
 
 #Preview {
-    GalleryView()
+    NavigationStack {
+        GalleryView()
+    }
 }

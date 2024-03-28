@@ -27,48 +27,50 @@ struct ChatRoomView: View {
     private var sendMessage: String = ""
     @StateObject var chatRoomViewModel = ChatRoomViewModle()
     var body: some View {
-        VStack {
-            Text("使用者名稱")
+        NavigationStack {
+            VStack {
+                ScrollView{
+                    Spacer()
+                    VStack(spacing: 10) {
+                        ForEach(chatRoomViewModel.messagesData){ message in
+                            MessageView(message: message)
+                        }
+                    }
+                    MessageView(message: Message(UserId: "123", text: "等等 我之後再說", photoURL: "", creatAt: Data()))
+                }
                 .padding()
-                .font(.title)
-            ScrollView{
-                Spacer()
-                VStack(spacing: 10) {
-                    ForEach(chatRoomViewModel.messagesData){ message in
-                        MessageView(message: message)
+                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                HStack{
+                    TextField(
+                            "Message",
+                            text: $message,
+                            axis: .vertical
+                    )
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .focused($isFocused)
+                    
+                        
+                    Button {
+                        isFocused = false
+                        print("send")
+                        
+                    } label: {
+                        Image(systemName: "paperplane")
+                            .foregroundStyle(Color.black)
                     }
                 }
-                MessageView(message: Message(UserId: "123", text: "等等 我之後再說", photoURL: "", creatAt: Data()))
+                .padding(.horizontal)
             }
-            .padding()
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-            HStack{
-                TextField(
-                        "Message",
-                        text: $message,
-                        axis: .vertical
-                )
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .focused($isFocused)
-                
-                    
-                Button {
-                    isFocused = false
-                    print("send")
-                    
-                } label: {
-                    Image(systemName: "paperplane")
-                        .foregroundStyle(Color.black)
-                }
-            }
-            .padding(.horizontal)
         }
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-        
+        .navigationTitle("使用者名稱")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    ChatRoomView()
+    NavigationStack {
+        ChatRoomView()
+    }
 }
