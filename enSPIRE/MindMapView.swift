@@ -5,13 +5,12 @@ struct MindMapView: View {
     // rootNode style
     @State private var rootNodeTextSize = 6
     @State private var rootNodeText = "寫下主題吧！"
-    @State private var isBlinking = false
     
     // node
     @State private var isFirstNode = true
     @State private var input = ""
     @State private var nodeText = ""
-    @State private var rootNode: Node = Node(text: "Root")
+    @StateObject var rootNode = Node(text: "Root Node")
     @State private var selectedNode: Node? = nil
     
     // drag & magnification
@@ -24,68 +23,41 @@ struct MindMapView: View {
         
         ZStack {
             
-            VStack {
-                HStack {
-                    ForEach(rootNode.children.indices, id: \.self) { index in
-                        let childNode = self.rootNode.children[index]
-                        if index % 2 == 0 {
-                            NodeView_Top(node: childNode, selectedNode: $selectedNode)
-                                .padding()
-                        }
-                    }
-                }
+            ZStack {
                 
-                ZStack {
-                    Circle()
-                        .frame(width: Double(rootNodeTextSize)*20)
-                        .foregroundColor(.yellow)
-                    
-                    Text(rootNodeText)
-                        .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
-                        .onAppear {
-                            withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
-                                self.isBlinking.toggle()
-                            }
-                        }
-                        .onTapGesture {
-                            self.selectedNode = self.rootNode
-                            print(self.selectedNode?.text)
-                        }
-                }
-                HStack {
-                    ForEach(rootNode.children.indices, id: \.self) { index in
-                        let childNode = self.rootNode.children[index]
-                        if index % 2 == 1 {
-                            NodeView_Down(node: childNode, selectedNode: $selectedNode)
-                                .padding()
-                        }
-                    }
+                
+                MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
+                    .frame(width: UIScreen.main.bounds.width*curScale, height: UIScreen.main.bounds.height*curScale)
+                    .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
+                    .scaleEffect(gestureScale * curScale)
+                    .gesture(
+                        SimultaneousGesture(
+                            DragGesture()
+                                .updating($gestureOffset, body: { (value, state, _) in
+                                    state = value.translation
+                                })
+                                .onEnded({ (value) in
+                                    curPos.height += value.translation.height
+                                    curPos.width += value.translation.width
+                                }),
+                            MagnificationGesture()
+                                .updating($gestureScale, body: { (value, state, _) in
+                                    state = value
+                                })
+                                .onEnded({ (value) in
+                                    curScale *= value * 0.5
+                                })
+                        )
+                    )
+                
+                ForEach(rootNode.children) { childNode in
+                    LineView(startNode: rootNode, endNode: childNode)
+                    NodeLineView(node: childNode)
                 }
             }
-            .padding()
-            .frame(width: 380 * curScale, height: 720 * curScale)
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-            .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
-            .scaleEffect(gestureScale * curScale)
-            .gesture(
-                SimultaneousGesture(
-                    DragGesture()
-                        .updating($gestureOffset, body: { (value, state, _) in
-                            state = value.translation
-                        })
-                        .onEnded({ (value) in
-                            self.curPos.height += value.translation.height
-                            self.curPos.width += value.translation.width
-                        }),
-                    MagnificationGesture()
-                        .updating($gestureScale, body: { (value, state, _) in
-                            state = value
-                        })
-                        .onEnded({ (value) in
-                            self.curScale *= value
-                        })
-                )
-            )
+            
+
+            
             
             
             VStack {
@@ -113,8 +85,7 @@ struct MindMapView: View {
                                 }
                                 else {
                                     if let selectedNode = self.selectedNode {
-                                        let newNode = Node(text: nodeText)
-                                        self.addChildNode(to: selectedNode, nodeToAdd: newNode, in: &self.rootNode)
+                                        selectedNode.addChild(childText: nodeText)
                                     }
                                 }
                             }
@@ -133,8 +104,7 @@ struct MindMapView: View {
                             }
                             else {
                                 if let selectedNode = self.selectedNode {
-                                    let newNode = Node(text: nodeText)
-                                    self.addChildNode(to: selectedNode, nodeToAdd: newNode, in: &self.rootNode)
+                                    selectedNode.addChild(childText: nodeText)
                                 }
                             }
                         }
@@ -145,27 +115,9 @@ struct MindMapView: View {
                     }
                 }
             }
+            .frame(width: 300, height: 720)
         }
     }
-    
-    private func addChildNode(to parentNode: Node, nodeToAdd: Node, in rootNode: inout Node) {
-        if parentNode == rootNode {
-            rootNode.children.append(nodeToAdd)
-            return
-        }
-        
-        for i in 0..<rootNode.children.count {
-            var child = rootNode.children[i]
-            if child == parentNode {
-                child.children.append(nodeToAdd)
-                rootNode.children[i] = child
-                return
-            } else {
-                addChildNode(to: parentNode, nodeToAdd: nodeToAdd, in: &rootNode.children[i])
-            }
-        }
-    }
-    
 }
 
 
@@ -174,7 +126,3 @@ struct MindMapView: View {
 #Preview {
     MindMapView()
 }
-
-
-
-

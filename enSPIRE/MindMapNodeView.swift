@@ -1,57 +1,114 @@
 import SwiftUI
 
-struct NodeView_Down: View {
-    let node: Node
+struct MindMapNodeView: View {
+    
+    @ObservedObject var rootNode: Node
     @Binding var selectedNode: Node?
-
+    
+    let rootNodeText : String
+    let rootNodeTextSize : Int
+    let isFirstNode: Bool
+    
+    @State private var isBlinking = false
+    
     var body: some View {
-        
         VStack {
+            HStack {
+                ForEach(rootNode.children.indices, id: \.self) { index in
+                    let childNode = rootNode.children[index]
+                    if index % 2 == 0 {
+                        NodeView_Top(node: childNode, selectedNode: $selectedNode)
+                            .padding()
+                    }
+                }
+            }
             
-            Rectangle()
-                .foregroundColor(.white)
-                .frame(width: 16, height: Double(node.text.count)*14.5)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-                .padding(0)
-                .overlay (
-                    VStack {
-                        ForEach(Array(node.text), id: \.self) { char in
-                            Text(String(char))
-                                .font(.system(size: 12))
-                                .foregroundColor(.black)
-                            Spacer().frame(height: 0)
+            ZStack {
+                Circle()
+                    .frame(width: Double(rootNodeTextSize)*20)
+                    .foregroundColor(.yellow)
+                    .overlay(
+                        GeometryReader(content: { geo in
+                            Color.clear
+                            
+                                .onAppear() {
+                                    rootNode.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                }
+                                .onChange(of: geo.frame(in: .global).origin) {
+                                    rootNode.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                    print("root", geo.frame(in: .global).origin.y)
+                                    print("root", geo.frame(in: .global).height)
+                                    print("root", geo.size)
+                                }
+                        })
+                    )
+                
+                Text(rootNodeText)
+                    .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
+                    .onAppear {
+                        withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
+                            self.isBlinking.toggle()
                         }
                     }
-                )
-                .onTapGesture {
-                    self.selectedNode = self.node
-                    print(self.selectedNode?.text)
-                }
-            
+                    .onTapGesture {
+                        selectedNode = rootNode
+                        print(selectedNode?.text)
+                    }
+                    
+                
+            }
             HStack {
-                ForEach(node.children) { childNode in
-                    NodeView_Down(node: childNode,  selectedNode: self.$selectedNode)
-                        .padding(5)
+                ForEach(rootNode.children.indices, id: \.self) { index in
+                    let childNode = rootNode.children[index]
+                    if index % 2 == 1 {
+                        NodeView_Down(node: childNode, selectedNode: $selectedNode)
+                            .padding()
+                    }
                 }
             }
         }
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-        .padding(0)
+    }
+}
+
+struct NodeLineView: View {
+    @ObservedObject var node: Node
+    
+    var body: some View {
+        
+        ForEach(node.children) { childNode in
+            LineView(startNode: node, endNode: childNode)
+            NodeLineView(node: childNode)
+        }
+    }
+}
+
+struct LineView: View {
+    @ObservedObject var startNode: Node
+    @ObservedObject var endNode: Node
+    
+    var body: some View {
+        Path { path in
+            path.move(to: startNode.point)
+            path.addLine(to: endNode.point)
+            print("11111111")
+        }
+        .stroke(Color.black, lineWidth: 1)
     }
 }
 
 struct NodeView_Top: View {
-    let node: Node
+    @ObservedObject var node: Node
     @Binding var selectedNode: Node?
-
+    
     var body: some View {
         
         VStack {
             
             HStack {
                 ForEach(node.children) { childNode in
-                    NodeView_Top(node: childNode,  selectedNode: self.$selectedNode)
+                    NodeView_Top(node: childNode, selectedNode: $selectedNode)
                         .padding(5)
+                        
                 }
             }
             
@@ -69,12 +126,84 @@ struct NodeView_Top: View {
                             Spacer().frame(height: 0)
                         }
                     }
+                    .padding(0)
                 )
                 .onTapGesture {
-                    self.selectedNode = self.node
-                    print(self.selectedNode?.text)
+                    selectedNode = node
+                    print(selectedNode?.text)
                 }
+                .overlay(
+                    GeometryReader(content: { geo in
+                        Color.clear
+                            .onAppear() {
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                print(geo.frame(in: .global).origin.y)
+                                print(geo.frame(in: .global).height)
+                                print(geo.size)
+                                print(Double(node.text.count)*14.5)
+                            }
+                            .onChange(of: geo.frame(in: .global).origin) {
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                            }
+                    })
+                )
         }
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
     }
+}
+
+struct NodeView_Down: View {
+    @ObservedObject var node: Node
+    @Binding var selectedNode: Node?
+    
+    var body: some View {
+        
+        VStack {
+            
+            
+            
+            Rectangle()
+                .foregroundColor(.white)
+                .frame(width: 16, height: Double(node.text.count)*14.5)
+                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                .padding(0)
+                .overlay (
+                    VStack {
+                        ForEach(Array(node.text), id: \.self) { char in
+                            Text(String(char))
+                                .font(.system(size: 12))
+                                .foregroundColor(.black)
+                            Spacer().frame(height: 0)
+                        }
+                    }
+                )
+                .onTapGesture {
+                    selectedNode = node
+                    print(selectedNode?.text)
+                }
+                .overlay(
+                    GeometryReader(content: { geo in
+                        Color.clear
+                            .onAppear() {
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + (geo.size.width / 2), y: geo.frame(in: .global).origin.y - (geo.size.height / 2))
+                            }
+                            .onChange(of: geo.frame(in: .global).origin) {
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + (geo.size.width / 2), y: geo.frame(in: .global).origin.y - (geo.size.height / 2))
+                            }
+                    })
+                )
+            
+            HStack {
+                ForEach(node.children) { childNode in
+                    NodeView_Down(node: childNode, selectedNode: $selectedNode)
+                        .padding(5)
+                        
+                }
+            }
+        }
+    }
+}
+
+
+#Preview {
+    MindMapView()
 }
