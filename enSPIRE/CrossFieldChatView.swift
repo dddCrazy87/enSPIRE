@@ -20,15 +20,15 @@ class crossFieldUserListModle: ObservableObject {
 struct CrossFieldChatView: View {
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
     var body: some View {
-        VStack{
-            ScrollView{
-                VStack{
-                    ForEach(CrossFieldUserListModle.usersListData){ user in
-                        UserChatViewBar(user: user)
-                    }
+        ScrollView{
+            VStack{
+                ForEach(CrossFieldUserListModle.usersListData){ user in
+                    UserChatViewBar(user: user)
                 }
-            }.padding()
-        }.background(Color("YellowColor"))
+            }
+        }
+        .padding()
+        .background(Color("YellowColor"))
     }
 }
 

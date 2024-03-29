@@ -21,18 +21,16 @@ struct NormalChatView: View {
     @State private var haveNewMessage: Bool = true
     @StateObject var UserListModle = userListModle()
     var body: some View {
-        VStack{
-            ScrollView{
-                VStack{
-                    ForEach(UserListModle.usersListData){ user in
-                        UserChatViewBar(user: user)
-                    }
+        ScrollView{
+            VStack{
+                ForEach(UserListModle.usersListData){ user in
+                    UserChatViewBar(user: user)
                 }
             }
-            .padding()
-            
         }
+        .padding()
         .background(Color("YellowColor"))
+       
     }
 }
 

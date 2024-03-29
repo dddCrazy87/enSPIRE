@@ -25,12 +25,20 @@ struct ContentView: View {
     //                    <#code#>
                 case .mindmap:
                     MindMapView()
+                        .toolbarBackground(.visible, for: .bottomBar)
+                        .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
                     ChatView()
+                        .toolbarBackground(.visible, for: .bottomBar)
+                        .toolbarColorScheme(.light, for: .bottomBar)
                 case .gallery:
                     GalleryView()
+                        .toolbarBackground(.visible, for: .bottomBar)
+                        .toolbarColorScheme(.light, for: .bottomBar)
                 case .profile:
                     UserProfileView()
+                        .toolbarBackground(.visible, for: .bottomBar)
+                        .toolbarColorScheme(.light, for: .bottomBar)
                 default:
                     Text("error")
                 }
@@ -44,7 +52,7 @@ struct ContentView: View {
                         Image("MindmapIcon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 45, height: 45)
                     }
                     Spacer()
                     Button {
@@ -53,7 +61,7 @@ struct ContentView: View {
                         Image("ChatIcon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 45, height: 45)
                     }
                     Spacer()
                     Button {
@@ -62,7 +70,7 @@ struct ContentView: View {
                         Image("GalleryIcon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 45, height: 45)
                     }
                     Spacer()
                     Button {
@@ -71,7 +79,7 @@ struct ContentView: View {
                         Image("PersonIcon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 45, height: 45)
                     }
                     Spacer()
                 }
