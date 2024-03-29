@@ -27,7 +27,6 @@ struct MindMapView: View {
                 
                 
                 MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
-                    .frame(width: UIScreen.main.bounds.width*curScale, height: UIScreen.main.bounds.height*curScale)
                     .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
                     .scaleEffect(gestureScale * curScale)
                     .gesture(
@@ -42,10 +41,11 @@ struct MindMapView: View {
                                 }),
                             MagnificationGesture()
                                 .updating($gestureScale, body: { (value, state, _) in
-                                    state = value
+                                    state = max(0.5, min(value, 2.5))
                                 })
                                 .onEnded({ (value) in
-                                    curScale *= value * 0.5
+                                    curScale *= max(0.5, min(value, 2.5))
+                                    print(curScale)
                                 })
                         )
                     )
