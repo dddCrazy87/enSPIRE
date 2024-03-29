@@ -7,67 +7,32 @@
 
 import SwiftUI
 
+class userListModle: ObservableObject {
+    @Published var usersListData = [
+       userInfo(UserId: "123", userName: "安安", photo: "abc", haveNewMessage: true),
+       userInfo(UserId: "123", userName: "好好", photo: "abc", haveNewMessage: true),
+       userInfo(UserId: "123", userName: "大帥哥", photo: "abc", haveNewMessage: true),
+       userInfo(UserId: "123", userName: "小美女", photo: "abc", haveNewMessage: false),
+       userInfo(UserId: "123", userName: "熱血戰士", photo: "abc", haveNewMessage: false)
+    ]
+}
+
 struct NormalChatView: View {
+    @State private var haveNewMessage: Bool = true
+    @StateObject var UserListModle = userListModle()
     var body: some View {
         VStack{
             ScrollView{
                 VStack{
-                    HStack{
-                        AnyShape(Circle())
-                            .frame(width: 50)
-                            .foregroundStyle(Color.yellow)
-                            .padding(.trailing)
-                        Text("使用者名稱")
-                        Spacer()
-                        AnyShape(Circle())
-                            .frame(width: 10)
-                            .foregroundStyle(Color.orange)
+                    ForEach(UserListModle.usersListData){ user in
+                        UserChatViewBar(user: user)
                     }
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    HStack{
-                        AnyShape(Circle())
-                            .frame(width: 50)
-                            .foregroundStyle(Color.yellow)
-                            .padding(.trailing)
-                        Text("使用者名稱")
-                        Spacer()
-                        AnyShape(Circle())
-                            .frame(width: 10)
-                            .foregroundStyle(Color.orange)
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    HStack{
-                        AnyShape(Circle())
-                            .frame(width: 50)
-                            .foregroundStyle(Color.yellow)
-                            .padding(.trailing)
-                        Text("使用者名稱")
-                        Spacer()
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    HStack{
-                        AnyShape(Circle())
-                            .frame(width: 50)
-                            .foregroundStyle(Color.yellow)
-                            .padding(.trailing)
-                        Text("使用者名稱")
-                        Spacer()
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
             }
             .padding()
-            .background(Color("YellowColor"))
-            .clipShape(RoundedRectangle(cornerRadius: 15))
+            
         }
+        .background(Color("YellowColor"))
     }
 }
 

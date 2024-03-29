@@ -7,38 +7,48 @@
 
 import SwiftUI
 
-struct Trapezoid: Shape {
-    func path(in rect: CGRect) -> Path {
-        Path { path in
-            let horizontalOffset: CGFloat = rect.width * 0.12
-            path.move(to: CGPoint(x: rect.minX + horizontalOffset, y: rect.minY ))
-            path.addLine(to: CGPoint(x: rect.maxX - horizontalOffset, y: rect.minY))
-            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-            path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-            path.addLine(to: CGPoint(x: rect.minX + horizontalOffset, y: rect.minY))
-        }
-    }
-}
-
 struct ChatView: View {
     @State var tabIndex = 0
-    @Namespace private var namespace
+    @State private var showEditSheet: Bool = false
+    @State private var showAddChatRoomSheet: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack{
+                ChatingProjectSettingView()
                 CustomTopTabBar(tabIndex: $tabIndex)
                 if tabIndex == 0 {
                     NormalChatView()
-                        .matchedGeometryEffect(id: "highlightmenuitem", in: namespace)
                 }
                 else {
                     CrossFieldChatView()
-                        .matchedGeometryEffect(id: "highlightmenuitem", in: namespace)
                 }
             }
         }
         .navigationTitle("討論室")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar{
+            ToolbarItemGroup{
+                Button{
+                    showEditSheet.toggle()
+                }label: {
+                   Image(systemName: "square.and.pencil")
+                }
+                .sheet(isPresented: $showEditSheet){
+                    EditSheetView(showEditSheet: $showEditSheet)
+                }
+                Button{
+                    showAddChatRoomSheet.toggle()
+                }label: {
+                   Image(systemName: "person.crop.circle.badge.plus")
+                }
+                .sheet(isPresented: $showAddChatRoomSheet){
+                    Text("This is the expandable bottom sheet.")
+                        .presentationDetents([ .medium, .large])
+                        .presentationBackground(.thinMaterial)
+                }
+            }
+        }
     }
 }
 
@@ -70,24 +80,25 @@ struct TabBarButton: View {
         VStack{
             if isSelected {
                 ZStack{
-                    Trapezoid()
-                        .offset(y:20)
-                        .frame(width: 195, height: 60)
-                        .foregroundStyle(Color("YellowColor"))
-                        .matchedGeometryEffect(id: "Trapezoid", in: namespace)
-
                     Text(text)
-                        .frame(width: 120)
+                        .foregroundStyle(Color.black)
+                        .font(.system(size: 17, weight: .bold))
+                        .frame(width: 180)
                         .padding()
+                        .padding(.bottom)
                         .background(Color("YellowColor"))
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                         .matchedGeometryEffect(id: "highlightmenuitem", in: namespace)
                 }
+                .offset(y: 25)
             }
             else {
                 Text(text)
-                    .frame(width: 120)
+                    .foregroundStyle(Color.gray)
+                    .font(.system(size: 17, weight: .bold))
+                    .frame(width: 150)
                     .padding()
+                    .offset(y: 15)
             }
         }
     }

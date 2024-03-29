@@ -1,0 +1,36 @@
+//
+//  UserChatViewBar.swift
+//  enSPIRE
+//
+//  Created by 劉丞恩 on 2024/3/29.
+//
+
+import SwiftUI
+
+struct UserChatViewBar: View {
+    var user: userInfo
+    
+    var body: some View {
+        HStack{
+            AnyShape(Circle())
+                .frame(width: 50)
+                .foregroundStyle(Color.yellow)
+                .padding(.trailing)
+            Text(user.userName)
+            Spacer()
+            if user.haveNewMessage {
+                AnyShape(Circle())
+                    .frame(width: 10)
+                    .foregroundStyle(Color.orange)
+            }
+            
+        }
+        .padding()
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+}
+
+#Preview {
+    UserChatViewBar(user: userInfo(UserId: "123", userName: "okok", photo: "", haveNewMessage: true))
+}
