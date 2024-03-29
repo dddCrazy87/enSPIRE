@@ -25,7 +25,7 @@ struct MindMapNodeView: View {
             
             ZStack {
                 Circle()
-                    .frame(width: Double(rootNodeTextSize)*20)
+                    .frame(width: Double(rootNodeTextSize)*20, height: Double(rootNodeTextSize)*20)
                     .foregroundColor(.yellow)
                     .overlay(
                         GeometryReader(content: { geo in
