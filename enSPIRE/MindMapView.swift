@@ -25,9 +25,12 @@ struct MindMapView: View {
             
             ZStack {
                 
+                ForEach(rootNode.children) { childNode in
+                    LineView(startNode: rootNode, endNode: childNode)
+                    NodeLineView(node: childNode)
+                }
                 
                 MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
-                    .coordinateSpace(name: "Mind Map View")
                     .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
                     .scaleEffect(gestureScale * curScale)
                     .gesture(
@@ -50,12 +53,8 @@ struct MindMapView: View {
                                 })
                         )
                     )
-                
-                ForEach(rootNode.children) { childNode in
-                    LineView(startNode: rootNode, endNode: childNode)
-                    NodeLineView(node: childNode)
-                }
             }
+            .coordinateSpace(name: "Mind Map View")
             
 
             

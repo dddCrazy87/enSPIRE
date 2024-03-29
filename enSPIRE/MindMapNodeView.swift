@@ -32,10 +32,10 @@ struct MindMapNodeView: View {
                             Color.clear
                             
                                 .onAppear() {
-                                    rootNode.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                    rootNode.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                                 }
-                                .onChange(of: geo.frame(in: .global).origin) {
-                                    rootNode.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                .onChange(of: geo.frame(in: .named("Mind Map View")).origin) {
+                                    rootNode.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                                 }
                         })
                     )
@@ -87,7 +87,6 @@ struct LineView: View {
         Path { path in
             path.move(to: startNode.point)
             path.addLine(to: endNode.point)
-            print("11111111")
         }
         .stroke(Color.black, lineWidth: 1)
     }
@@ -133,10 +132,10 @@ struct NodeView_Top: View {
                     GeometryReader(content: { geo in
                         Color.clear
                             .onAppear() {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                node.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                             }
-                            .onChange(of: geo.frame(in: .global).origin) {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                            .onChange(of: geo.frame(in: .named("Mind Map View")).origin) {
+                                node.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                             }
                     })
                 )
@@ -177,10 +176,10 @@ struct NodeView_Down: View {
                     GeometryReader(content: { geo in
                         Color.clear
                             .onAppear() {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                                node.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                             }
-                            .onChange(of: geo.frame(in: .global).origin) {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
+                            .onChange(of: geo.frame(in: .named("Mind Map View")).origin) {
+                                node.point = CGPoint(x: geo.frame(in: .named("Mind Map View")).origin.x + geo.frame(in: .named("Mind Map View")).width/2, y: geo.frame(in: .named("Mind Map View")).origin.y + geo.frame(in: .named("Mind Map View")).height/2)
                             }
                     })
                 )
