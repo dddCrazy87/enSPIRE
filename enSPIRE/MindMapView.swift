@@ -7,11 +7,11 @@ struct MindMapView: View {
     @State private var rootNodeText = "寫下主題吧！"
     
     // node
+    @StateObject var rootNode = Node(text: "Root Node")
+    @State private var selectedNode: Node? = nil
     @State private var isFirstNode = true
     @State private var input = ""
     @State private var nodeText = ""
-    @StateObject var rootNode = Node(text: "Root Node")
-    @State private var selectedNode: Node? = nil
     
     // drag & magnification
     @State private var curPos: CGSize = .zero
@@ -21,7 +21,9 @@ struct MindMapView: View {
     
     var body: some View {
         
-        ZStack {
+        VStack {
+            
+            Spacer()
             
             ZStack {
                 
@@ -56,43 +58,22 @@ struct MindMapView: View {
             }
             .coordinateSpace(name: "Mind Map View")
             
-
+            Spacer()
             
+            if isFirstNode {
+                Text("首先，寫下一個主題吧！")
+            }
+            else {
+                Text(selectedNode?.hintText ?? "選擇一個節點吧！")
+            }
             
+            Spacer().frame(height: 0)
             
-            VStack {
-                Spacer()
-                if isFirstNode {
-                    Text("首先，寫下一個主題吧！")
-                }
-                else {
-                    Text(selectedNode?.hintText ?? "選擇一個節點吧！")
-                }
-                Spacer().frame(height: 0)
-                HStack {
-                    TextField("寫下你的想法...", text: $input)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 250, height: 60)
-                        .onSubmit {
-                            nodeText = input
-                            if nodeText != "" {
-                                if isFirstNode {
-                                    isFirstNode = false
-                                    rootNode.text = nodeText
-                                    rootNode.hintText = generateHint(text: nodeText)
-                                    rootNodeTextSize = rootNode.text.count
-                                    rootNodeText = rootNode.text
-                                }
-                                else {
-                                    if let selectedNode = self.selectedNode {
-                                        selectedNode.addChild(childText: nodeText)
-                                    }
-                                }
-                            }
-                            input = ""
-                            self.selectedNode = nil
-                        }
-                    Button {
+            HStack {
+                TextField("寫下你的想法...", text: $input)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 250, height: 60)
+                    .onSubmit {
                         nodeText = input
                         if nodeText != "" {
                             if isFirstNode {
@@ -110,13 +91,33 @@ struct MindMapView: View {
                         }
                         input = ""
                         self.selectedNode = nil
-                    } label: {
-                        Image(systemName: "paperplane")
                     }
+                Button {
+                    nodeText = input
+                    if nodeText != "" {
+                        if isFirstNode {
+                            isFirstNode = false
+                            rootNode.text = nodeText
+                            rootNode.hintText = generateHint(text: nodeText)
+                            rootNodeTextSize = rootNode.text.count
+                            rootNodeText = rootNode.text
+                        }
+                        else {
+                            if let selectedNode = self.selectedNode {
+                                selectedNode.addChild(childText: nodeText)
+                            }
+                        }
+                    }
+                    input = ""
+                    self.selectedNode = nil
+                } label: {
+                    Image(systemName: "paperplane")
                 }
             }
-            .frame(width: 300, height: 720)
+            
         }
+        .navigationTitle("聯想室")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -124,5 +125,7 @@ struct MindMapView: View {
 
 
 #Preview {
-    MindMapView()
+    NavigationStack {
+        MindMapView()
+    }
 }
