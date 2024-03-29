@@ -36,9 +36,6 @@ struct MindMapNodeView: View {
                                 }
                                 .onChange(of: geo.frame(in: .global).origin) {
                                     rootNode.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
-                                    print("root", geo.frame(in: .global).origin.y)
-                                    print("root", geo.frame(in: .global).height)
-                                    print("root", geo.size)
                                 }
                         })
                     )
@@ -137,10 +134,6 @@ struct NodeView_Top: View {
                         Color.clear
                             .onAppear() {
                                 node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
-                                print(geo.frame(in: .global).origin.y)
-                                print(geo.frame(in: .global).height)
-                                print(geo.size)
-                                print(Double(node.text.count)*14.5)
                             }
                             .onChange(of: geo.frame(in: .global).origin) {
                                 node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
@@ -184,10 +177,10 @@ struct NodeView_Down: View {
                     GeometryReader(content: { geo in
                         Color.clear
                             .onAppear() {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + (geo.size.width / 2), y: geo.frame(in: .global).origin.y - (geo.size.height / 2))
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
                             }
                             .onChange(of: geo.frame(in: .global).origin) {
-                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + (geo.size.width / 2), y: geo.frame(in: .global).origin.y - (geo.size.height / 2))
+                                node.point = CGPoint(x: geo.frame(in: .global).origin.x + geo.frame(in: .global).width/2, y: geo.frame(in: .global).origin.y)
                             }
                     })
                 )
