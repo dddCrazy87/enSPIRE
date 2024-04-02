@@ -109,6 +109,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4238B6682BBB9BDD00E8900E /* MindMapView */ = {
+			isa = PBXGroup;
+			children = (
+				428F06E02BAD25D50030C286 /* MindMapView.swift */,
+				428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */,
+			);
+			path = MindMapView;
+			sourceTree = "<group>";
+		};
+		4238B6692BBB9BED00E8900E /* ChatRoomView */ = {
+			isa = PBXGroup;
+			children = (
+				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
+				F5042C6B2BB5BA9D0000FF40 /* NormalChatView.swift */,
+				F5042C692BB5B80A0000FF40 /* CrossFieldChatView.swift */,
+				F5042C6D2BB5E85D0000FF40 /* EditSheetView.swift */,
+				F5042C6F2BB64F380000FF40 /* ChatingProjectSettingView.swift */,
+				F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */,
+				F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */,
+				F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */,
+				F5BC97B02BAE8CD000C499C0 /* MessageView.swift */,
+			);
+			path = ChatRoomView;
+			sourceTree = "<group>";
+		};
+		4238B66A2BBB9C4100E8900E /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
+				F5BC97A62BAB1CD500C499C0 /* GridView.swift */,
+			);
+			path = GalleryView;
+			sourceTree = "<group>";
+		};
+		4238B66C2BBB9CA500E8900E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				428F06E22BAD283E0030C286 /* MindMapData.swift */,
+				F5BC97B22BAEAEE100C499C0 /* Message.swift */,
+				F5042C752BB6AB1E0000FF40 /* UserInfo.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		42B61D332BA940DA0058A48D = {
 			isa = PBXGroup;
 			children = (
@@ -135,22 +179,10 @@
 				42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */,
 				F5042C662BB27E920000FF40 /* LaunchScreenView.swift */,
 				42B61D412BA940DA0058A48D /* ContentView.swift */,
-				428F06E02BAD25D50030C286 /* MindMapView.swift */,
-				428F06E22BAD283E0030C286 /* MindMapData.swift */,
-				428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */,
-				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
-				F5042C6B2BB5BA9D0000FF40 /* NormalChatView.swift */,
-				F5042C692BB5B80A0000FF40 /* CrossFieldChatView.swift */,
-				F5042C6D2BB5E85D0000FF40 /* EditSheetView.swift */,
-				F5042C6F2BB64F380000FF40 /* ChatingProjectSettingView.swift */,
-				F5042C752BB6AB1E0000FF40 /* UserInfo.swift */,
-				F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */,
-				F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */,
-				F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */,
-				F5BC97B02BAE8CD000C499C0 /* MessageView.swift */,
-				F5BC97B22BAEAEE100C499C0 /* Message.swift */,
-				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
-				F5BC97A62BAB1CD500C499C0 /* GridView.swift */,
+				4238B66C2BBB9CA500E8900E /* Data */,
+				4238B6682BBB9BDD00E8900E /* MindMapView */,
+				4238B6692BBB9BED00E8900E /* ChatRoomView */,
+				4238B66A2BBB9C4100E8900E /* GalleryView */,
 				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
 				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
 				F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */,
