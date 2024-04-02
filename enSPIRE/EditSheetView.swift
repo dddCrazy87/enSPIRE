@@ -12,6 +12,8 @@ struct EditSheetView: View {
     @State private var titleMessage: String = ""
     @State private var infoMessage: String = ""
     @State private var nickNameMessage: String = ""
+    @State private var jobMessage: String = ""
+    @State private var habitMessage: String = ""
     var body: some View {
         VStack {
             HStack{
@@ -57,14 +59,14 @@ struct EditSheetView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.bottom, 4)
                     HStack{
-                        Image("PersonIcon")
+                        Image("SuitcaseIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 40)
                         Text("職業：")
                         TextField(
                                 "職業",
-                                text: $nickNameMessage,
+                                text: $jobMessage,
                                 axis: .vertical
                         )
                     }
@@ -72,14 +74,14 @@ struct EditSheetView: View {
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.bottom, 4)
                     HStack{
-                        Image("PersonIcon")
+                        Image("StarIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 40)
                         Text("興趣：")
                         TextField(
                                 "興趣",
-                                text: $nickNameMessage,
+                                text: $habitMessage,
                                 axis: .vertical
                         )
                     }
@@ -113,7 +115,6 @@ struct EditSheetView: View {
                 .padding(.vertical)
             }
             
-            Spacer()
             Button{
                 
             }label: {

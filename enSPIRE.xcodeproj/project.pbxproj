@@ -32,6 +32,7 @@
 		F5BC97B12BAE8CD000C499C0 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97B02BAE8CD000C499C0 /* MessageView.swift */; };
 		F5BC97B32BAEAEE100C499C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97B22BAEAEE100C499C0 /* Message.swift */; };
 		F5BC982B2BB1B1DE00C499C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */; };
+		F5E9C4AF2BBB0A8A0021C42E /* ChatRoomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		F5BC97B02BAE8CD000C499C0 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		F5BC97B22BAEAEE100C499C0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				F5042C752BB6AB1E0000FF40 /* UserInfo.swift */,
 				F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */,
 				F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */,
+				F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */,
 				F5BC97B02BAE8CD000C499C0 /* MessageView.swift */,
 				F5BC97B22BAEAEE100C499C0 /* Message.swift */,
 				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
@@ -328,6 +331,7 @@
 				F5042C672BB27E920000FF40 /* LaunchScreenView.swift in Sources */,
 				F5042C6E2BB5E85D0000FF40 /* EditSheetView.swift in Sources */,
 				428986642BADE8CA00FE8DB8 /* MindMapNodeView.swift in Sources */,
+				F5E9C4AF2BBB0A8A0021C42E /* ChatRoomMessageView.swift in Sources */,
 				F5042C6A2BB5B80A0000FF40 /* CrossFieldChatView.swift in Sources */,
 				F5BC97B32BAEAEE100C499C0 /* Message.swift in Sources */,
 				F5BC97AF2BAE6D3900C499C0 /* ChatRoomView.swift in Sources */,

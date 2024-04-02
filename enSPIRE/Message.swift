@@ -14,7 +14,5 @@ struct Message:Identifiable {
     let photoURL:  String
     let creatAt: Data
     
-    func isFromCurrentUser() -> Bool{
-        return false
-    }
+    let isFromCurrentUser:Bool
 }

@@ -63,7 +63,7 @@ struct LaunchScreenView: View {
                 .offset(y: offset)
                 .onAppear(){
                     withAnimation(.easeOut(duration: 5).delay(0.1)){
-                        self.offset = -13
+                        self.offset = -23
                         self.size = 0.85
                     }
                 }
@@ -102,7 +102,7 @@ struct LaunchScreenView: View {
 struct MyShape : Shape {
     func path(in rect: CGRect) -> Path {
         var p = Path()
-        p.move(to: CGPoint(x: 130, y: 435))
+        p.move(to: CGPoint(x: 120, y: 445))
         p.addQuadCurve(to: CGPoint(x: 170, y: 410), control: CGPoint(x: 155, y: 440))
         p.move(to: CGPoint(x: 170, y: 410))
         p.addQuadCurve(to: CGPoint(x: 171, y: 365), control: CGPoint(x: 150, y: 370))
@@ -115,7 +115,7 @@ struct MyShape : Shape {
         p.move(to: CGPoint(x: 210, y: 420))
         p.addQuadCurve(to: CGPoint(x: 220, y: 365), control: CGPoint(x: 250, y: 370))
         p.move(to: CGPoint(x: 210, y: 420))
-        p.addQuadCurve(to: CGPoint(x: 280, y: 470), control: CGPoint(x: 220, y: 450))
+        p.addQuadCurve(to: CGPoint(x: 250, y: 450), control: CGPoint(x: 230, y: 450))
 
         return p.strokedPath(.init(lineWidth: 6))
     }

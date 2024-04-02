@@ -11,7 +11,7 @@ struct MessageView: View {
     var message: Message
     
     var body: some View {
-        if message.isFromCurrentUser() {
+        if message.isFromCurrentUser {
             VStack(alignment: .trailing){
                 HStack(alignment: .top)
                 {
@@ -59,5 +59,5 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data()))
+    MessageView(message: Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isFromCurrentUser: false))
 }

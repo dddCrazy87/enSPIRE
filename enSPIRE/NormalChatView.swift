@@ -23,7 +23,7 @@ struct NormalChatView: View {
     var body: some View {
         ScrollView{
             VStack{
-                ForEach(UserListModle.usersListData){ user in
+                ForEach(UserListModle.usersListData, id: \.id){ user in
                     UserChatViewBar(user: user)
                 }
             }

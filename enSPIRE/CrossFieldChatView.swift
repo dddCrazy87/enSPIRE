@@ -22,7 +22,7 @@ struct CrossFieldChatView: View {
     var body: some View {
         ScrollView{
             VStack{
-                ForEach(CrossFieldUserListModle.usersListData){ user in
+                ForEach(CrossFieldUserListModle.usersListData, id: \.id){ user in
                     UserChatViewBar(user: user)
                 }
             }
