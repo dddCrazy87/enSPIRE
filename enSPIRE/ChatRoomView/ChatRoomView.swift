@@ -21,6 +21,6 @@ struct ChatRoomView: View {
 
 #Preview {
     NavigationStack {
-        ChatRoomView(user: userInfo(UserId: "123", userName: "okok", photo: "", haveNewMessage: true))
+        ChatRoomView(user: userInfo(UserId: "123", userName: "okok", photo: ""))
     }
 }

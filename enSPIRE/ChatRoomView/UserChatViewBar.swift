@@ -21,11 +21,11 @@ struct UserChatViewBar: View {
                 Text(user.userName)
                     .foregroundStyle(Color.black)
                 Spacer()
-                if user.haveNewMessage {
-                    AnyShape(Circle())
-                        .frame(width: 10)
-                        .foregroundStyle(Color.orange)
-                }
+//                if user.haveNewMessage {
+//                    AnyShape(Circle())
+//                        .frame(width: 10)
+//                        .foregroundStyle(Color.orange)
+//                }
                 
             }
             .padding()
@@ -36,5 +36,5 @@ struct UserChatViewBar: View {
 }
 
 #Preview {
-    UserChatViewBar(user: userInfo(UserId: "123", userName: "okok", photo: "", haveNewMessage: true))
+    UserChatViewBar(user: userInfo(UserId: "123", userName: "okok", photo: ""))
 }

@@ -9,11 +9,11 @@ import SwiftUI
 
 class crossFieldUserListModle: ObservableObject {
     @Published var usersListData = [
-       userInfo(UserId: "123", userName: "好帥", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "飛天狗", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "八爪博士的晚餐", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "無話可說", photo: "abc", haveNewMessage: false),
-       userInfo(UserId: "123", userName: "猜猜我是誰", photo: "abc", haveNewMessage: false)
+       userInfo(UserId: "123", userName: "好帥", photo: "abc"),
+       userInfo(UserId: "123", userName: "飛天狗", photo: "abc"),
+       userInfo(UserId: "123", userName: "八爪博士的晚餐", photo: "abc"),
+       userInfo(UserId: "123", userName: "無話可說", photo: "abc"),
+       userInfo(UserId: "123", userName: "猜猜我是誰", photo: "abc")
     ]
 }
 

@@ -12,5 +12,4 @@ struct userInfo:Identifiable {
     let UserId: String
     let userName: String
     let photo:  String
-    let haveNewMessage: Bool
 }

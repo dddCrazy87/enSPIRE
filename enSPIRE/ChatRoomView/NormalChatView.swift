@@ -9,11 +9,11 @@ import SwiftUI
 
 class userListModle: ObservableObject {
     @Published var usersListData = [
-       userInfo(UserId: "123", userName: "安安", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "好好", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "大帥哥", photo: "abc", haveNewMessage: true),
-       userInfo(UserId: "123", userName: "小美女", photo: "abc", haveNewMessage: false),
-       userInfo(UserId: "123", userName: "熱血戰士", photo: "abc", haveNewMessage: false)
+       userInfo(UserId: "123", userName: "安安", photo: "abc"),
+       userInfo(UserId: "123", userName: "好好", photo: "abc"),
+       userInfo(UserId: "123", userName: "大帥哥", photo: "abc"),
+       userInfo(UserId: "123", userName: "小美女", photo: "abc"),
+       userInfo(UserId: "123", userName: "熱血戰士", photo: "abc")
     ]
 }
 
