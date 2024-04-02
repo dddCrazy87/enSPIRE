@@ -33,6 +33,8 @@
 		F5BC97B32BAEAEE100C499C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97B22BAEAEE100C499C0 /* Message.swift */; };
 		F5BC982B2BB1B1DE00C499C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */; };
 		F5E9C4AF2BBB0A8A0021C42E /* ChatRoomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */; };
+		F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */; };
+		F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		F5BC97B22BAEAEE100C499C0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomMessageView.swift; sourceTree = "<group>"; };
+		F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomSheetView.swift; sourceTree = "<group>"; };
+		F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreeenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
+				F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */,
+				F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */,
 				F5042C6B2BB5BA9D0000FF40 /* NormalChatView.swift */,
 				F5042C692BB5B80A0000FF40 /* CrossFieldChatView.swift */,
 				F5042C6D2BB5E85D0000FF40 /* EditSheetView.swift */,
@@ -348,6 +354,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */,
+				F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */,
 				F5BC97B12BAE8CD000C499C0 /* MessageView.swift in Sources */,
 				F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */,
 				42B61D422BA940DA0058A48D /* ContentView.swift in Sources */,

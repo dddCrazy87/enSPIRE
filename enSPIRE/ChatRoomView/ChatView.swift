@@ -43,9 +43,7 @@ struct ChatView: View {
                    Image(systemName: "person.crop.circle.badge.plus")
                 }
                 .sheet(isPresented: $showAddChatRoomSheet){
-                    Text("This is the expandable bottom sheet.")
-                        .presentationDetents([ .medium, .large])
-                        .presentationBackground(.thinMaterial)
+                    AddChatRoomSheetView()
                 }
             }
         }
