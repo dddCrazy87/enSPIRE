@@ -12,4 +12,6 @@ struct userInfo:Identifiable {
     let UserId: String
     let userName: String
     let photo:  String
+    let job: [String] = []
+    let habit: [String] = []
 }
