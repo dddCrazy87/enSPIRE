@@ -34,7 +34,7 @@ struct MindMapView: View {
                 
                 MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
                     .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
-                    .scaleEffect(gestureScale * curScale)
+                    .scaleEffect(max(0.5, min(gestureScale * curScale, 2.5)))
                     .gesture(
                         SimultaneousGesture(
                             DragGesture()
@@ -118,6 +118,36 @@ struct MindMapView: View {
         }
         .navigationTitle("聯想室")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("選擇其他專案")
+                    }
+                    Button {
+                        
+                    } label: {
+                        Text("新增空白專案")
+                    }
+                    Button {
+                        
+                    } label: {
+                        Text("儲存專案")
+                    }
+                    Button {
+                        
+                    } label: {
+                        Text("另存為PNG")
+                    }
+                    
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+        }
     }
 }
 
