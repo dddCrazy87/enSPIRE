@@ -1,43 +1,103 @@
 import SwiftUI
 
 struct UploadPiecesView: View {
+    
+    @State private var name = ""
+    @State private var auther = ""
+    @State private var description = ""
+    @State private var link = ""
+    
     var body: some View {
+        
         VStack(alignment: .leading) {
+            
+            Spacer()
             HStack {
                 Spacer()
-                Image("")
-                    .resizable()
-                    .frame(width: 300, height: 220)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                ZStack(alignment: .bottomTrailing) {
+                    Image("")
+                        .resizable()
+                        .frame(width: 300, height: 200)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("上傳作品封面")
+                            .font(.system(size: 14))
+                            .foregroundColor(.black)
+                    }
+                    .background(Color.yellow)
+                    .cornerRadius(8)
+                    .padding()
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color("Yellow2Color"))
+                }
                 Spacer()
             }
-            Button {
-                
-            } label: {
-                Text("選擇作品檔案")
-                    .font(.system(size: 23))
-                    .foregroundColor(.black)
-                    .frame(width: 170, height: 40)
-                    .background(Color.yellow)
-            }
-            Text("作品名稱")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .frame(height: 30)
-            Text("作者")
-                .font(.system(size: 23))
-                .padding(.leading)
             
-            Text("作品名稱")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            
+            HStack {
+                Text("作品名稱：")
+                    .frame(height: 30)
+                    .bold()
+                TextField("作品名稱", text: $name)
+            }
+            
+            HStack {
+                Text("作者：")
+                    .padding(.leading)
+                TextField("作者", text: $auther)
+            }
+            
+            Text("作品連結")
                 .frame(height: 30)
-            Text("米南德講過，俗知憂能老，為視鏡中絲。這段話令我陷入了沈思。作品概述的發生，到底需要如何實現，不作品概述的發生，又會如何產生。不難發現，問題在於該用什麼標準來做決定呢？緬甸曾說過，沉睡的蝦，會被急流捲走。強烈建議大家把這段話牢牢記住。")
-                .font(.system(size: 18))
-                .frame(width: 300)
-                .padding(.leading)
+                .bold()
+            
+            HStack {
+                Spacer()
+                TextField("在這裡貼上作品連結", text: $link)
+                    .frame(width: 300)
+                Spacer()
+            }
+            
+            Text("作品概述")
+                .frame(height: 30)
+                .bold()
+            
+            HStack {
+                Spacer()
+                TextField(
+                    "簡單介紹一下這個作品吧",
+                    text: $description,
+                    axis: .vertical
+                )
+                .frame(minHeight: 100, alignment: .top)
+                .multilineTextAlignment(.leading)
+                .foregroundStyle(.gray)
+                .padding()
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("YellowColor"), lineWidth: 2)
+                }
+                Spacer()
+            }
+            
+            Spacer()
+            
+            Button{
+                
+            }label: {
+                Text("上傳")
+                    .frame(width: 325, height: 30)
+                    .foregroundColor(.black)
+                    
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(Color("Yellow2Color"))
         }
-        .frame(width: 320)
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-        .navigationTitle("作品名稱")
+        .frame(width: 350)
+        .navigationTitle(name.count == 0 ? "未命名作品" : name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
