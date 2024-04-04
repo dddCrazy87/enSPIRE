@@ -89,7 +89,7 @@ struct UploadPiecesView: View {
             .frame(minHeight: 100, alignment: .top)
             .multilineTextAlignment(.leading)
             .foregroundStyle(.gray)
-            .padding(5)
+            .padding(10)
             .overlay{
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color("YellowColor"), lineWidth: 2)
