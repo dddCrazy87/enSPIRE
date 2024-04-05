@@ -24,7 +24,7 @@ struct ContentView: View {
     //                case .signin:
     //                    <#code#>
                 case .mindmap:
-                    MindMapView()
+                    MindMapView(rootNode: Node(text: "Root Node"))
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
@@ -36,7 +36,7 @@ struct ContentView: View {
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .profile:
-                    UserProfileView()
+                    UserProfileView(userInfo: userInfo(UserId: "1", userName: "xyunwei", photo: ""), showProj: true)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 default:

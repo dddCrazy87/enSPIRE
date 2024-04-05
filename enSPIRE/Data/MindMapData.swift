@@ -16,6 +16,12 @@ class Node: Identifiable, ObservableObject {
         self.hintText = generateHint(text: text)
     }
     
+    init(text: String, children: [Node]) {
+        self.text = text
+        self.children = children
+        self.hintText = generateHint(text: text)
+    }
+    
     func addChild(childText: String) {
         let childNode = Node(text: childText)
         children.append(childNode)

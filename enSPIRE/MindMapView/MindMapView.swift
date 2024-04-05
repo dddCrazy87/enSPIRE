@@ -7,7 +7,7 @@ struct MindMapView: View {
     @State private var rootNodeText = "寫下主題吧！"
     
     // node
-    @StateObject var rootNode = Node(text: "Root Node")
+    @ObservedObject var rootNode:Node
     @State private var selectedNode: Node? = nil
     @State private var isFirstNode = true
     @State private var input = ""
@@ -156,6 +156,6 @@ struct MindMapView: View {
 
 #Preview {
     NavigationStack {
-        MindMapView()
+        MindMapView(rootNode: Node(text: "Root Node"))
     }
 }

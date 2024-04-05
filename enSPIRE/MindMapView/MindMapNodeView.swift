@@ -197,5 +197,5 @@ struct NodeView_Down: View {
 
 
 #Preview {
-    MindMapView()
+    MindMapView(rootNode: Node(text: "Root Node"))
 }
