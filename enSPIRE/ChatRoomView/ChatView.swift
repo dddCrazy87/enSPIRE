@@ -10,7 +10,6 @@ import SwiftUI
 struct ChatView: View {
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
-    @State private var showAddChatRoomSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,14 +36,12 @@ struct ChatView: View {
                 .sheet(isPresented: $showEditSheet){
                     EditSheetView(showEditSheet: $showEditSheet)
                 }
-                Button{
-                    showAddChatRoomSheet.toggle()
+                NavigationLink{
+                    AddChatRoomSheetView()
                 }label: {
                    Image(systemName: "person.crop.circle.badge.plus")
                 }
-                .sheet(isPresented: $showAddChatRoomSheet){
-                    AddChatRoomSheetView()
-                }
+            
             }
         }
     }
@@ -108,56 +105,3 @@ struct TabBarButton: View {
         ChatView()
     }
 }
-
-
-//.toolbar{
-//    ToolbarItemGroup(placement: .topBarTrailing) {
-//        Button{
-//            addChatRoomToggle = true
-//            print("add")
-//        }label: {
-//            Image(systemName: "person.badge.plus")
-//                .foregroundStyle(Color.black)
-//        }
-//        .sheet(isPresented: $addChatRoomToggle) {
-//            VStack {
-//                Text("新增討論室")
-//                    .font(.system(size: 25, weight: .bold))
-//                    .padding(.top, 40)
-//                    .padding(.bottom, 10)
-//                Text("選擇你要新增的討論室的類型")
-//                    .foregroundStyle(Color.secondary)
-//                    .font(.system(size: 14))
-//                HStack{
-//                    Button{
-//                        print("add")
-//                    } label: {
-//                        Text("+ 新增討論")
-//                            .padding(.horizontal, 20)
-//                            .padding(.vertical, 10)
-//                    }
-//                    .font(.system(size: 16))
-//                    .foregroundStyle(Color.black)
-//                    .background(Color.yellow)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    
-//                    Button{
-//                        print("add")
-//                    } label: {
-//                        Text("+ 新增跨領域討論")
-//                            .padding(.horizontal, 20)
-//                            .padding(.vertical, 10)
-//                    }
-//                    .font(.system(size: 16))
-//                    .foregroundStyle(Color.black)
-//                    .background(Color.yellow)
-//                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    
-//                }
-//                .padding()
-//                Spacer()
-//            }
-//            .presentationDetents([ .medium, .large])
-//        }
-//    }
-//}

@@ -8,58 +8,56 @@
 import SwiftUI
 
 struct LoadingScreeenView: View {
-    @State private var size = 1.0
-    @State private var opacity = 0.9
+    var user: userInfo
+    @State private var opacity = 1.0
+    @State private var isLoading = false
     @State private var isActive = false
-    @State private var color = Color("YellowColor")
-    @State private var backgroundColor = Color("DefaultColor")
-    var body: some View {
-        ZStack{
-            ZStack{
-                Circle()
-                    .fill()
-                    .frame(width: 160)
-                    .foregroundStyle(color)
-                    .scaleEffect(size)
+
+        var body: some View {
+            if isActive {
+                ChatRoomSheetCardView(user: user)
+            } else{
+                VStack{
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .fill()
+                            .frame(width: 150, height: 150)
+                            .foregroundStyle(Color.white)
+
+                        Circle()
+                            .trim(from: 0, to: 0.2)
+                            .stroke(Color("Yellow2Color"), lineWidth: 10)
+                            .frame(width: 150, height: 150)
+                            .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                            .onAppear() {
+                                self.isLoading = true
+                            }
+                        Text("尋找中...")
+                            .font(.system(size: 20))
+                            .font(.system(.body, design: .rounded))
+                    }
+                    .opacity(opacity)
                     .onAppear(){
-                        withAnimation(.easeIn(duration: 2.0).delay(0.3)){
-                            self.color = Color("YellowColor")
-                        }
-                        withAnimation(.spring(duration: 1.0).delay(1.3).speed(1.3)){
-                            self.color = Color("Yellow2Color")
-                            self.size = 1.2
+                        withAnimation(.easeInOut(duration: 1).delay(5)){
+                            self.opacity = 0.0
                         }
                     }
-                ZStack{
-                    MyShape()
+                    Spacer()
                 }
-                .opacity(opacity)
-                .scaleEffect(size)
-                .onAppear(){
-                    withAnimation(.easeOut(duration: 3.6).delay(1.8).speed(1.3)){
-                        self.opacity = 1
-                        self.size = 1.5
+                .frame(width: 450)
+                .background(Color("YellowColor"))
+                .onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 6){
+                        self.isActive = true
                     }
-                }
-            }
-            .scaleEffect(size)
-            .onAppear(){
-                withAnimation(.easeOut(duration: 5).delay(0.1)){
-                    self.size = 0.85
                 }
             }
             
         }
-        .background(backgroundColor)
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6.2){
-                self.isActive = true
-            }
-        }
-
-    }
 }
 
 #Preview {
-    LoadingScreeenView()
+    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }

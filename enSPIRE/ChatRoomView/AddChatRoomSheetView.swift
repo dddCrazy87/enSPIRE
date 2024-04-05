@@ -10,15 +10,19 @@ import SwiftUI
 struct AddChatRoomSheetView: View {
     @State var tabIndex = 0
     var body: some View {
-        VStack{
-            CustomSheetTopTabBar(tabIndex: $tabIndex)
-            if tabIndex == 0 {
-                NormalChatView()
-            }
-            else {
-                CrossFieldChatView()
+        NavigationStack{
+            VStack{
+                CustomSheetTopTabBar(tabIndex: $tabIndex)
+                if tabIndex == 0 {
+                    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                }
+                else {
+                    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                }
             }
         }
+        .navigationTitle("新增討論室")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -53,7 +57,7 @@ struct SheetTabBarButton: View {
                     Text(text)
                         .foregroundStyle(Color.black)
                         .font(.system(size: 17, weight: .bold))
-                        .frame(width: 180)
+                        .frame(width: 100)
                         .padding()
                         .padding(.bottom)
                         .background(Color("YellowColor"))
@@ -66,7 +70,7 @@ struct SheetTabBarButton: View {
                 Text(text)
                     .foregroundStyle(Color.gray)
                     .font(.system(size: 17, weight: .bold))
-                    .frame(width: 150)
+                    .frame(width: 100)
                     .padding()
                     .offset(y: 15)
             }
@@ -75,5 +79,7 @@ struct SheetTabBarButton: View {
 }
 
 #Preview {
-    AddChatRoomSheetView()
+    NavigationStack{
+        ChatView()
+    }
 }
