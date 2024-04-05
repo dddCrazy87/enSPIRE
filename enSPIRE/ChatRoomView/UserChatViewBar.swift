@@ -21,11 +21,6 @@ struct UserChatViewBar: View {
                 Text(user.userName)
                     .foregroundStyle(Color.black)
                 Spacer()
-//                if user.haveNewMessage {
-//                    AnyShape(Circle())
-//                        .frame(width: 10)
-//                        .foregroundStyle(Color.orange)
-//                }
                 
             }
             .padding()

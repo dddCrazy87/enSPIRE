@@ -36,6 +36,7 @@
 		F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */; };
 		F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */; };
 		F5E9C4B52BBBAF510021C42E /* ChatRoomSheetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B42BBBAF510021C42E /* ChatRoomSheetCardView.swift */; };
+		F5E9C4B72BBFD5C60021C42E /* PreChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9C4B62BBFD5C60021C42E /* PreChatRoomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatRoomSheetView.swift; sourceTree = "<group>"; };
 		F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreeenView.swift; sourceTree = "<group>"; };
 		F5E9C4B42BBBAF510021C42E /* ChatRoomSheetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomSheetCardView.swift; sourceTree = "<group>"; };
+		F5E9C4B62BBFD5C60021C42E /* PreChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatRoomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
 				F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */,
 				F5E9C4B42BBBAF510021C42E /* ChatRoomSheetCardView.swift */,
+				F5E9C4B62BBFD5C60021C42E /* PreChatRoomView.swift */,
 				F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */,
 				F5042C6B2BB5BA9D0000FF40 /* NormalChatView.swift */,
 				F5042C692BB5B80A0000FF40 /* CrossFieldChatView.swift */,
@@ -359,6 +362,7 @@
 			files = (
 				F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */,
 				F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */,
+				F5E9C4B72BBFD5C60021C42E /* PreChatRoomView.swift in Sources */,
 				F5BC97B12BAE8CD000C499C0 /* MessageView.swift in Sources */,
 				F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */,
 				42B61D422BA940DA0058A48D /* ContentView.swift in Sources */,

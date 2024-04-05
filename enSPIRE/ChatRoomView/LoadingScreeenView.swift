@@ -40,7 +40,7 @@ struct LoadingScreeenView: View {
                     }
                     .opacity(opacity)
                     .onAppear(){
-                        withAnimation(.easeInOut(duration: 1).delay(5)){
+                        withAnimation(.easeInOut(duration: 1).delay(3)){
                             self.opacity = 0.0
                         }
                     }
@@ -49,7 +49,7 @@ struct LoadingScreeenView: View {
                 .frame(width: 450)
                 .background(Color("YellowColor"))
                 .onAppear{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 6){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4){
                         self.isActive = true
                     }
                 }

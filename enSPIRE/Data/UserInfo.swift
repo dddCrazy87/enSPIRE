@@ -12,6 +12,7 @@ struct userInfo:Identifiable {
     let UserId: String
     let userName: String
     let photo:  String
+    var isCrossField: Bool = false
     var job: [String] = []
     var habit: [String] = []
 }
