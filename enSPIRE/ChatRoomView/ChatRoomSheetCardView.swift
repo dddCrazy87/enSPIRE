@@ -105,6 +105,10 @@ struct ChatRoomSheetCardView: View {
             .shadow(radius: 5)
             .offset(offset)
             .scaleEffect(getScaleAmount())
+            .overlay{
+                Rectangle()
+                    .background(Color("OrangeColor").opacity(0.5))
+            }
             .gesture(
                 DragGesture()
                     .onChanged{ value in
@@ -133,10 +137,8 @@ struct ChatRoomSheetCardView: View {
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 }
                 .padding()
-                Button{
-                    print("start to chat")
-                    check.toggle()
-
+                NavigationLink{
+                    PreChatRoomView(user: user)
                 }label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 30, weight: .bold))

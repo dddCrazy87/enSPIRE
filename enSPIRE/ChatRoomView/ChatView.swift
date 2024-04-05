@@ -10,7 +10,6 @@ import SwiftUI
 struct ChatView: View {
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
-    
     var body: some View {
         NavigationStack {
             VStack{
@@ -26,6 +25,7 @@ struct ChatView: View {
         }
         .navigationTitle("討論室")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .toolbar{
             ToolbarItemGroup{
                 Button{
