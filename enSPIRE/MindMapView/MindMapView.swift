@@ -2,6 +2,8 @@ import SwiftUI
 
 struct MindMapView: View {
     
+    @State var isPreview: Bool
+    
     // rootNode style
     @State private var rootNodeTextSize = 6
     @State private var rootNodeText = "寫下主題吧！"
@@ -32,48 +34,73 @@ struct MindMapView: View {
                     NodeLineView(node: childNode)
                 }
                 
-                MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
-                    .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
-                    .scaleEffect(max(0.5, min(gestureScale * curScale, 2.5)))
-                    .gesture(
-                        SimultaneousGesture(
-                            DragGesture()
-                                .updating($gestureOffset, body: { (value, state, _) in
-                                    state = value.translation
-                                })
-                                .onEnded({ (value) in
-                                    curPos.height += value.translation.height
-                                    curPos.width += value.translation.width
-                                }),
-                            MagnificationGesture()
-                                .updating($gestureScale, body: { (value, state, _) in
-                                    state = max(0.5, min(value, 2.5))
-                                })
-                                .onEnded({ (value) in
-                                    curScale *= max(0.5, min(value, 2.5))
-                                    print(curScale)
-                                })
+                if isPreview {
+                    MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNode.text, rootNodeTextSize: rootNode.text.count, isFirstNode: false)
+                }
+                else {
+                    MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNodeText, rootNodeTextSize: rootNodeTextSize, isFirstNode: isFirstNode)
+                        .offset(x: curPos.width + gestureOffset.width, y: curPos.height + gestureOffset.height)
+                        .scaleEffect(max(0.5, min(gestureScale * curScale, 2.5)))
+                        .gesture(
+                            SimultaneousGesture(
+                                DragGesture()
+                                    .updating($gestureOffset, body: { (value, state, _) in
+                                        state = value.translation
+                                    })
+                                    .onEnded({ (value) in
+                                        curPos.height += value.translation.height
+                                        curPos.width += value.translation.width
+                                    }),
+                                MagnificationGesture()
+                                    .updating($gestureScale, body: { (value, state, _) in
+                                        state = max(0.5, min(value, 2.5))
+                                    })
+                                    .onEnded({ (value) in
+                                        curScale *= max(0.5, min(value, 2.5))
+                                        print(curScale)
+                                    })
+                            )
                         )
-                    )
+                }
             }
             .coordinateSpace(name: "Mind Map View")
             
             Spacer()
             
-            if isFirstNode {
-                Text("首先，寫下一個主題吧！")
-            }
-            else {
-                Text(selectedNode?.hintText ?? "選擇一個節點吧！")
-            }
-            
-            Spacer().frame(height: 0)
-            
-            HStack {
-                TextField("寫下你的想法...", text: $input)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(width: 250, height: 60)
-                    .onSubmit {
+            if !isPreview {
+                if isFirstNode {
+                    Text("首先，寫下一個主題吧！")
+                }
+                else {
+                    Text(selectedNode?.hintText ?? "選擇一個節點吧！")
+                }
+                
+                Spacer().frame(height: 0)
+                
+                HStack {
+                    TextField("寫下你的想法...", text: $input)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 250, height: 60)
+                        .onSubmit {
+                            nodeText = input
+                            if nodeText != "" {
+                                if isFirstNode {
+                                    isFirstNode = false
+                                    rootNode.text = nodeText
+                                    rootNode.hintText = generateHint(text: nodeText)
+                                    rootNodeTextSize = rootNode.text.count
+                                    rootNodeText = rootNode.text
+                                }
+                                else {
+                                    if let selectedNode = self.selectedNode {
+                                        selectedNode.addChild(childText: nodeText)
+                                    }
+                                }
+                            }
+                            input = ""
+                            self.selectedNode = nil
+                        }
+                    Button {
                         nodeText = input
                         if nodeText != "" {
                             if isFirstNode {
@@ -91,60 +118,41 @@ struct MindMapView: View {
                         }
                         input = ""
                         self.selectedNode = nil
+                    } label: {
+                        Image(systemName: "paperplane")
                     }
-                Button {
-                    nodeText = input
-                    if nodeText != "" {
-                        if isFirstNode {
-                            isFirstNode = false
-                            rootNode.text = nodeText
-                            rootNode.hintText = generateHint(text: nodeText)
-                            rootNodeTextSize = rootNode.text.count
-                            rootNodeText = rootNode.text
-                        }
-                        else {
-                            if let selectedNode = self.selectedNode {
-                                selectedNode.addChild(childText: nodeText)
-                            }
-                        }
-                    }
-                    input = ""
-                    self.selectedNode = nil
-                } label: {
-                    Image(systemName: "paperplane")
                 }
-            }
-            
-        }
-        .navigationTitle("聯想室")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("選擇其他專案")
+                .navigationTitle("聯想室")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            
+                            Button {
+                                
+                            } label: {
+                                Text("選擇其他專案")
+                            }
+                            Button {
+                                
+                            } label: {
+                                Text("新增空白專案")
+                            }
+                            Button {
+                                
+                            } label: {
+                                Text("儲存專案")
+                            }
+                            Button {
+                                
+                            } label: {
+                                Text("另存為PNG")
+                            }
+                            
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                        }
                     }
-                    Button {
-                        
-                    } label: {
-                        Text("新增空白專案")
-                    }
-                    Button {
-                        
-                    } label: {
-                        Text("儲存專案")
-                    }
-                    Button {
-                        
-                    } label: {
-                        Text("另存為PNG")
-                    }
-                    
-                } label: {
-                    Image(systemName: "ellipsis.circle")
                 }
             }
         }
@@ -156,6 +164,6 @@ struct MindMapView: View {
 
 #Preview {
     NavigationStack {
-        MindMapView(rootNode: Node(text: "Root Node"))
+        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a"),Node(text: "a")]),Node(text: "a")]))
     }
 }

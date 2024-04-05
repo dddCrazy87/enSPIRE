@@ -25,7 +25,7 @@ struct MindMapNodeView: View {
             
             ZStack {
                 Circle()
-                    .frame(width: Double(rootNodeTextSize)*20, height: Double(rootNodeTextSize)*20)
+                    .frame(width: min(125, Double(rootNodeTextSize)*18),height: min(125,Double(rootNodeTextSize)*18))
                     .foregroundColor(.yellow)
                     .overlay(
                         GeometryReader(content: { geo in
@@ -41,6 +41,8 @@ struct MindMapNodeView: View {
                     )
                 
                 Text(rootNodeText)
+                    .frame(width: 100)
+                    .lineLimit(3)
                     .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)
                     .onAppear {
                         withAnimation(Animation.easeInOut(duration: 0.5).repeatForever()) {
@@ -197,5 +199,5 @@ struct NodeView_Down: View {
 
 
 #Preview {
-    MindMapView(rootNode: Node(text: "Root Node"))
+    MindMapView(isPreview: false, rootNode: Node(text: "Root Node"))
 }
