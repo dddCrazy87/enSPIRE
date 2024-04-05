@@ -14,10 +14,10 @@ struct AddChatRoomSheetView: View {
             VStack{
                 CustomSheetTopTabBar(tabIndex: $tabIndex)
                 if tabIndex == 0 {
-                    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
                 }
                 else {
-                    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
                 }
             }
         }

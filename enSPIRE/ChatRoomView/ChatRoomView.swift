@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatRoomView: View {
-    var user: userInfo
+    var user: UserInfo
     @State private var backtoChatHomeView: Bool = false
     var body: some View {
         if backtoChatHomeView {
@@ -39,6 +39,6 @@ struct ChatRoomView: View {
 
 #Preview {
     NavigationStack {
-        ChatRoomView(user: userInfo(UserId: "123", userName: "okok", photo: ""))
+        ChatRoomView(user: UserInfo(UserId: "123", userName: "okok", photo: ""))
     }
 }

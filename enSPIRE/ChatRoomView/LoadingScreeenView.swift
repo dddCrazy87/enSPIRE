@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoadingScreeenView: View {
-    var user: userInfo
+    var user: UserInfo
     @State private var opacity = 1.0
     @State private var isLoading = false
     @State private var isActive = false
@@ -59,5 +59,5 @@ struct LoadingScreeenView: View {
 }
 
 #Preview {
-    LoadingScreeenView(user: userInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }

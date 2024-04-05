@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatRoomSheetCardView: View {
-    var user: userInfo
+    var user: UserInfo
     @State private var showDetials: Bool = false
     @State private var offset: CGSize = .zero
     @State private var check: Bool = false
@@ -166,5 +166,5 @@ struct ChatRoomSheetCardView: View {
 }
 
 #Preview {
-    ChatRoomSheetCardView(user: userInfo(UserId: "123", userName: "okok", photo: "", isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+    ChatRoomSheetCardView(user: UserInfo(UserId: "123", userName: "okok", photo: "", isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }

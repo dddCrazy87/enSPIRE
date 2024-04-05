@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserChatViewBar: View {
-    var user: userInfo
+    var user: UserInfo
     var body: some View {
         NavigationLink {
             ChatRoomView(user: user)
@@ -31,5 +31,5 @@ struct UserChatViewBar: View {
 }
 
 #Preview {
-    UserChatViewBar(user: userInfo(UserId: "123", userName: "okok", photo: ""))
+    UserChatViewBar(user: UserInfo(UserId: "123", userName: "okok", photo: ""))
 }

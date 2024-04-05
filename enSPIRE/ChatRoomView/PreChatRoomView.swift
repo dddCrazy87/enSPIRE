@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PreChatRoomView: View {
-    var user: userInfo
+    var user: UserInfo
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
     @StateObject var UserListModle = userListModle()
     var body: some View {
@@ -59,5 +59,5 @@ struct PreChatRoomView: View {
 }
 
 #Preview {
-    PreChatRoomView(user: userInfo(UserId: "123", userName: "okok", photo: "",isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+    PreChatRoomView(user: UserInfo(UserId: "123", userName: "okok", photo: "",isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }
