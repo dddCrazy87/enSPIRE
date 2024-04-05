@@ -72,34 +72,46 @@ struct UserProfileView: View {
                 CustomTopTabBar2(tabIndex: $tabIndex)
                 
                 if tabIndex == 0 {
-                    ScrollView(.vertical) {
-                        VStack {
-                            
-                            ForEach(mindmapProj.nodes.indices, id: \.self) { index in
-                                HStack {
-                                    Spacer()
-                                    
-                                    if index % 2 == 0 {
-                                        MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index])
-                                            .frame(width: 180, height: 180)
-                                            .clipped()
-                                            .padding(.vertical, 40)
-                                        
-                                        if index + 1 < mindmapProj.nodes.count {
-                                            MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index+1])
-                                                .frame(width: 180, height: 180)
-                                                .clipped()
-                                                .padding(.vertical, 40)
-                                        }
-                                        else {
-                                            Spacer().frame(width: 180, height: 180)
-                                        }
-                                    }
-                                    
-                                    Spacer()
-                                }
+//                    ScrollView(.vertical) {
+//                        VStack {
+//                            
+//                            ForEach(mindmapProj.nodes.indices, id: \.self) { index in
+//                                HStack {
+//                                    Spacer()
+//                                    
+//                                    if index % 2 == 0 {
+//                                        MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index])
+//                                            .frame(width: 180, height: 180)
+//                                            .clipped()
+//                                            .padding(.vertical, 40)
+//                                        
+//                                        if index + 1 < mindmapProj.nodes.count {
+//                                            MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index+1])
+//                                                .frame(width: 180, height: 180)
+//                                                .clipped()
+//                                                .padding(.vertical, 40)
+//                                        }
+//                                        else {
+//                                            Spacer().frame(width: 180, height: 180)
+//                                        }
+//                                    }
+//                                    
+//                                    Spacer()
+//                                }
+//                            }
+//                                
+//                        }
+//                    }
+//                    .background(Color("YellowColor"))
+                    
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(mindmapProj.nodes, id:\.id) { node in
+                                MindMapView(isPreview: true, rootNode: node)
+                                    .frame(width: 150)
+                                    .clipped()
+                                    .padding(.horizontal, 20)
                             }
-                                
                         }
                     }
                     .background(Color("YellowColor"))
