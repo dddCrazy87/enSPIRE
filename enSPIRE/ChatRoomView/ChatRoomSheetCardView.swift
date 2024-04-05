@@ -105,10 +105,10 @@ struct ChatRoomSheetCardView: View {
             .shadow(radius: 5)
             .offset(offset)
             .scaleEffect(getScaleAmount())
-            .overlay{
-                Rectangle()
-                    .background(Color("OrangeColor").opacity(0.5))
-            }
+//            .overlay{
+//                Rectangle()
+//                    .background(Color("OrangeColor").opacity(0.5))
+//            }
             .gesture(
                 DragGesture()
                     .onChanged{ value in
