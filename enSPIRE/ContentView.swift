@@ -13,6 +13,19 @@ struct ContentView: View {
     
     @State private var curPage = PageController.mindmap
     
+    // editing mind map proj
+    @State private var mindMap_editing = Node(text: "root")
+    
+    // user data
+    @State private var userInfo = UserInfo(UserId: "111", userName: "許昀韋", photo: "", job: ["通緝犯", "尊者"], habit: ["擲筊", "請示", "開槍"])
+    
+    @State private var mindMapProj = MindmapProjs(nodes: [
+        Node(text: "影像藝術論期中主題", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
+        Node(text: "女朋友的生日禮物", children: [Node(text: "2A"),Node(text: "2AA"),Node(text: "2AA")]),
+        Node(text: "推薦的晚餐", children: [Node(text: "3A"),Node(text: "3AAA")]),
+        Node(text: "小說劇情", children: [Node(text: "4A")]),
+        Node(text: "音樂比賽主題", children: [Node(text: "5A"),Node(text: "5AA"),Node(text: "5AAA"),Node(text: "5AAAA")])])
+    
     var body: some View {
         NavigationStack {
                 
@@ -24,7 +37,7 @@ struct ContentView: View {
     //                case .signin:
     //                    <#code#>
                 case .mindmap:
-                    MindMapView(rootNode: Node(text: "Root Node"))
+                    MindMapView(isPreview: false, rootNode: mindMap_editing)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
@@ -35,10 +48,10 @@ struct ContentView: View {
                     GalleryView()
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
-//                case .profile:
-//                    UserProfileView(userInfo: userInfo(UserId: "1", userName: "xyunwei", photo: ""),tabIndex: 0, mindmapProj: [root1, root2, root3, root4, root5, root6])
-//                        .toolbarBackground(.visible, for: .bottomBar)
-//                        .toolbarColorScheme(.light, for: .bottomBar)
+                case .profile:
+                    UserProfileView(userInfo: userInfo, tabIndex: 0, mindmapProj: mindMapProj)
+                        .toolbarBackground(.visible, for: .bottomBar)
+                        .toolbarColorScheme(.light, for: .bottomBar)
                 default:
                     Text("error")
                 }
