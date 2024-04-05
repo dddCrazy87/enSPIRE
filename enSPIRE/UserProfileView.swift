@@ -2,9 +2,10 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-    let userInfo:userInfo
+    let userInfo:UserInfo
     @State var tabIndex : Int
     @ObservedObject var mindmapProj : MindmapProjs
+    @State private var selectedNode: Node? = nil
     
     var body: some View {
         NavigationStack {
@@ -71,7 +72,37 @@ struct UserProfileView: View {
                 CustomTopTabBar2(tabIndex: $tabIndex)
                 
                 if tabIndex == 0 {
-                    
+                    ScrollView(.vertical) {
+                        VStack {
+                            
+                            ForEach(mindmapProj.nodes.indices, id: \.self) { index in
+                                HStack {
+                                    Spacer()
+                                    
+                                    if index % 2 == 0 {
+                                        MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index])
+                                            .frame(width: 180, height: 180)
+                                            .clipped()
+                                            .padding(.vertical, 40)
+                                        
+                                        if index + 1 < mindmapProj.nodes.count {
+                                            MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index+1])
+                                                .frame(width: 180, height: 180)
+                                                .clipped()
+                                                .padding(.vertical, 40)
+                                        }
+                                        else {
+                                            Spacer().frame(width: 180, height: 180)
+                                        }
+                                    }
+                                    
+                                    Spacer()
+                                }
+                            }
+                                
+                        }
+                    }
+                    .background(Color("YellowColor"))
                 }
                 else {
                     
@@ -86,13 +117,12 @@ struct UserProfileView: View {
 
 #Preview {
     
-    UserProfileView(userInfo: userInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), tabIndex: 0, mindmapProj: MindmapProjs(nodes: [
-            Node(text: "root1", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
-            Node(text: "root2", children: [Node(text: "2A"),Node(text: "2AA")]),
-            Node(text: "root3", children: [Node(text: "3A"),Node(text: "3AAA")]),
-            Node(text: "root4", children: [Node(text: "4A")]),
-            Node(text: "root5", children: [Node(text: "5A"),Node(text: "5AA"),Node(text: "5AAA"),Node(text: "5AAAA")]),
-            Node(text: "root6", children: [Node(text: "6AAA")])
+    UserProfileView(userInfo: UserInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), tabIndex: 0, mindmapProj: MindmapProjs(nodes: [
+            Node(text: "影像藝術論期中主題", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
+            Node(text: "小說劇情", children: [Node(text: "2A"),Node(text: "2AA"),Node(text: "2AA")]),
+            Node(text: "推薦的晚餐", children: [Node(text: "3A"),Node(text: "3AAA")]),
+            Node(text: "女朋友的生日禮物", children: [Node(text: "4A")]),
+            Node(text: "音樂比賽主題", children: [Node(text: "5A"),Node(text: "5AA"),Node(text: "5AAA"),Node(text: "5AAAA")])
         ]))
 }
 
