@@ -35,10 +35,10 @@ struct ContentView: View {
                     GalleryView()
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
-                case .profile:
-                    UserProfileView(userInfo: userInfo(UserId: "1", userName: "xyunwei", photo: ""), showProj: true)
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
+//                case .profile:
+//                    UserProfileView(userInfo: userInfo(UserId: "1", userName: "xyunwei", photo: ""),tabIndex: 0, mindmapProj: [root1, root2, root3, root4, root5, root6])
+//                        .toolbarBackground(.visible, for: .bottomBar)
+//                        .toolbarColorScheme(.light, for: .bottomBar)
                 default:
                     Text("error")
                 }

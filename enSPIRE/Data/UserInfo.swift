@@ -15,3 +15,11 @@ struct userInfo:Identifiable {
     var job: [String] = []
     var habit: [String] = []
 }
+
+class MindmapProjs: ObservableObject {
+    @Published var nodes: [Node]
+    
+    init(nodes: [Node]) {
+        self.nodes = nodes
+    }
+}

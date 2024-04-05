@@ -3,7 +3,8 @@ import SwiftUI
 struct UserProfileView: View {
     
     let userInfo:userInfo
-    @State var showProj: Bool
+    @State var tabIndex : Int
+    @ObservedObject var mindmapProj : MindmapProjs
     
     var body: some View {
         NavigationStack {
@@ -63,9 +64,18 @@ struct UserProfileView: View {
                         .padding(.horizontal, 20)
                     }
                 }
-                .padding()
+                .padding(.top, 50)
                 
+                Spacer().frame(height: 0)
                 
+                CustomTopTabBar2(tabIndex: $tabIndex)
+                
+                if tabIndex == 0 {
+                    
+                }
+                else {
+                    
+                }
                 
             }
             .navigationTitle(userInfo.userName)
@@ -75,5 +85,32 @@ struct UserProfileView: View {
 }
 
 #Preview {
-    UserProfileView(userInfo: userInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), showProj: true)
+    
+    UserProfileView(userInfo: userInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), tabIndex: 0, mindmapProj: MindmapProjs(nodes: [
+            Node(text: "root1", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
+            Node(text: "root2", children: [Node(text: "2A"),Node(text: "2AA")]),
+            Node(text: "root3", children: [Node(text: "3A"),Node(text: "3AAA")]),
+            Node(text: "root4", children: [Node(text: "4A")]),
+            Node(text: "root5", children: [Node(text: "5A"),Node(text: "5AA"),Node(text: "5AAA"),Node(text: "5AAAA")]),
+            Node(text: "root6", children: [Node(text: "6AAA")])
+        ]))
+}
+
+struct CustomTopTabBar2: View {
+    @Binding var tabIndex: Int
+    private func onButtonTapped(index: Int) {
+        withAnimation(.easeInOut) {
+            tabIndex = index
+        }
+    }
+    @Namespace private var menuItemTransition
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            TabBarButton(text: "你的專案", isSelected: .constant(tabIndex == 0), namespace: menuItemTransition)
+                .onTapGesture { onButtonTapped(index: 0) }
+            TabBarButton(text: "你的作品", isSelected: .constant(tabIndex == 1), namespace: menuItemTransition)
+                .onTapGesture { onButtonTapped(index: 1) }
+        }
+    }
 }
