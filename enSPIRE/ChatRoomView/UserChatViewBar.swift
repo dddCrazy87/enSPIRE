@@ -9,9 +9,10 @@ import SwiftUI
 
 struct UserChatViewBar: View {
     var user: UserInfo
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         NavigationLink {
-            ChatRoomView(user: user)
+            ChatRoomView(user: user, curPage: $curPage)
         }label: {
             HStack{
                 AnyShape(Circle())
@@ -30,6 +31,4 @@ struct UserChatViewBar: View {
     }
 }
 
-#Preview {
-    UserChatViewBar(user: UserInfo(UserId: "123", userName: "okok", photo: ""))
-}
+

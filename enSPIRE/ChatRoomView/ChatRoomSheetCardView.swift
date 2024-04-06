@@ -12,6 +12,7 @@ struct ChatRoomSheetCardView: View {
     @State private var showDetials: Bool = false
     @State private var offset: CGSize = .zero
     @State private var check: Bool = false
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -138,7 +139,7 @@ struct ChatRoomSheetCardView: View {
                 }
                 .padding()
                 NavigationLink{
-                    PreChatRoomView(user: user)
+                    PreChatRoomView(user: user, curPage: $curPage)
                 }label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 30, weight: .bold))
@@ -163,8 +164,4 @@ struct ChatRoomSheetCardView: View {
         let persenctage = currentAmount / maxAmount
         return 1.0 - min(persenctage, 0.8) * 0.6
     }
-}
-
-#Preview {
-    ChatRoomSheetCardView(user: UserInfo(UserId: "123", userName: "okok", photo: "", isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }

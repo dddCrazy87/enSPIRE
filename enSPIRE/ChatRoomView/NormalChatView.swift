@@ -20,11 +20,12 @@ class userListModle: ObservableObject {
 struct NormalChatView: View {
     @State private var haveNewMessage: Bool = true
     @StateObject var UserListModle = userListModle()
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         ScrollView{
             VStack{
                 ForEach(UserListModle.usersListData, id: \.id){ user in
-                    UserChatViewBar(user: user)
+                    UserChatViewBar(user: user, curPage: $curPage)
                 }
             }
         }
@@ -32,8 +33,4 @@ struct NormalChatView: View {
         .background(Color("YellowColor"))
        
     }
-}
-
-#Preview {
-    NormalChatView()
 }

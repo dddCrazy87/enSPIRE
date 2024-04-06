@@ -9,15 +9,16 @@ import SwiftUI
 
 struct AddChatRoomSheetView: View {
     @State var tabIndex = 0
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         NavigationStack{
             VStack{
                 CustomSheetTopTabBar(tabIndex: $tabIndex)
                 if tabIndex == 0 {
-                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ), curPage: $curPage)
                 }
                 else {
-                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ), curPage: $curPage)
                 }
             }
         }
@@ -79,8 +80,3 @@ struct SheetTabBarButton: View {
     }
 }
 
-#Preview {
-    NavigationStack{
-        ChatView()
-    }
-}

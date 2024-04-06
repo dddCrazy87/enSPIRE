@@ -129,9 +129,3 @@ struct EditSheetView: View {
         }
     }
 }
-
-#Preview {
-    NavigationStack {
-        ChatView()
-    }
-}

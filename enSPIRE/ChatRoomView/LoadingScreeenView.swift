@@ -12,10 +12,11 @@ struct LoadingScreeenView: View {
     @State private var opacity = 1.0
     @State private var isLoading = false
     @State private var isActive = false
+    @Binding var curPage: ContentView.PageController
 
         var body: some View {
             if isActive {
-                ChatRoomSheetCardView(user: user)
+                ChatRoomSheetCardView(user: user, curPage: $curPage)
             } else{
                 VStack{
                     Spacer()
@@ -56,8 +57,4 @@ struct LoadingScreeenView: View {
             }
             
         }
-}
-
-#Preview {
-    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
 }

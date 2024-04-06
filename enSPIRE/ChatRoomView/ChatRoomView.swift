@@ -10,9 +10,11 @@ import SwiftUI
 struct ChatRoomView: View {
     var user: UserInfo
     @State private var backtoChatHomeView: Bool = false
+    @Binding var curPage: ContentView.PageController
+    
     var body: some View {
         if backtoChatHomeView {
-            ContentView()
+            ContentView(curPage: curPage)
         } else {
             NavigationStack {
                 ChatRoomMessageView()
@@ -24,6 +26,7 @@ struct ChatRoomView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         backtoChatHomeView.toggle()
+                        
                     } label: {
                         Image(systemName: "chevron.backward")
                             .resizable()
@@ -39,6 +42,6 @@ struct ChatRoomView: View {
 
 #Preview {
     NavigationStack {
-        ChatRoomView(user: UserInfo(UserId: "123", userName: "okok", photo: ""))
+        ChatRoomView(user: UserInfo(UserId: "123", userName: "okok", photo: ""), curPage: .constant(.chat))
     }
 }

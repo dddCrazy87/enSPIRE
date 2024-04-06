@@ -11,6 +11,7 @@ struct PreChatRoomView: View {
     var user: UserInfo
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
     @StateObject var UserListModle = userListModle()
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         
         VStack{
@@ -26,7 +27,7 @@ struct PreChatRoomView: View {
             .padding()
             .frame(width: 300, alignment: .leading)
             NavigationLink{
-                ChatRoomView(user: user)
+                ChatRoomView(user: user, curPage: $curPage)
                 
             }label: {
                 Text("開始討論")
@@ -58,6 +59,3 @@ struct PreChatRoomView: View {
     }
 }
 
-#Preview {
-    PreChatRoomView(user: UserInfo(UserId: "123", userName: "okok", photo: "",isCrossField: false, job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
-}

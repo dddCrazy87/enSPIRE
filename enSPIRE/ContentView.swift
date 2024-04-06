@@ -11,7 +11,7 @@ struct ContentView: View {
         case profile
     }
     
-    @State private var curPage = PageController.mindmap
+    @State var curPage = PageController.mindmap
     
     // editing mind map proj
     @State private var mindMap_editing = Node(text: "root")
@@ -41,7 +41,7 @@ struct ContentView: View {
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
-                    ChatView()
+                    ChatView(curPage: $curPage)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .gallery:
@@ -56,6 +56,7 @@ struct ContentView: View {
                     Text("error")
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Spacer()

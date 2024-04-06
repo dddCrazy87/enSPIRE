@@ -19,19 +19,16 @@ class crossFieldUserListModle: ObservableObject {
 
 struct CrossFieldChatView: View {
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         ScrollView{
             VStack{
                 ForEach(CrossFieldUserListModle.usersListData, id: \.id){ user in
-                    UserChatViewBar(user: user)
+                    UserChatViewBar(user: user, curPage: $curPage)
                 }
             }
         }
         .padding()
         .background(Color("YellowColor"))
     }
-}
-
-#Preview {
-    CrossFieldChatView()
 }

@@ -10,16 +10,17 @@ import SwiftUI
 struct ChatView: View {
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
+    @Binding var curPage: ContentView.PageController
     var body: some View {
         NavigationStack {
             VStack{
                 ChatingProjectSettingView()
                 CustomTopTabBar(tabIndex: $tabIndex)
                 if tabIndex == 0 {
-                    NormalChatView()
+                    NormalChatView(curPage: $curPage)
                 }
                 else {
-                    CrossFieldChatView()
+                    CrossFieldChatView(curPage: $curPage)
                 }
             }
         }
@@ -37,7 +38,7 @@ struct ChatView: View {
                     EditSheetView(showEditSheet: $showEditSheet)
                 }
                 NavigationLink{
-                    AddChatRoomSheetView()
+                    AddChatRoomSheetView(curPage: $curPage)
                 }label: {
                    Image(systemName: "person.crop.circle.badge.plus")
                 }
@@ -101,7 +102,5 @@ struct TabBarButton: View {
 
 
 #Preview {
-    NavigationStack{
-        ChatView()
-    }
+    ContentView()
 }
