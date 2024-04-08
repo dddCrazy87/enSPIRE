@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var mindMap_editing = Node(text: "root")
     
     // user data
-    @State private var userInfo = UserInfo(UserId: "111", userName: "AAAA", photo: "", job: ["BBB", "B", "BBBB", "BB"], habit: ["CCCCCCC", "CCCCCCCC", "CCCCCC", "CCCC"])
+    @State private var userInfo = UserInfo(UserId: "111", userName: "Wayne", photo: "", job: ["job1", "job2"], habit: ["看電影", "看書"])
     
     @State private var mindMapProj = MindmapProjs(nodes: [
         Node(text: "影像藝術論期中主題", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
