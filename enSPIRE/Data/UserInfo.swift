@@ -24,3 +24,11 @@ class MindmapProjs: ObservableObject {
         self.nodes = nodes
     }
 }
+
+class PiecesProjs: ObservableObject {
+    @Published var pieces: [Pieces]
+    
+    init(pieces: [Pieces]) {
+        self.pieces = pieces
+    }
+}
