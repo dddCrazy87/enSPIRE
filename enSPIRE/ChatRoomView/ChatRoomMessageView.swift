@@ -10,15 +10,15 @@ class ChatRoomViewModle: ObservableObject {
     @Published var messages = [Message]()
     
     @Published var messagesData = [
-       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(),isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(),isFromCurrentUser: false),
-       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isFromCurrentUser: false)
+        Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(),isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
+       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false)
     ]
 }
 
@@ -51,7 +51,7 @@ struct ChatRoomMessageView: View {
                         
                     Button {
                         print("send")
-                        chatRoomViewModel.messagesData.append(Message(UserId: "123", text: message, photoURL: "", creatAt: Data(), isFromCurrentUser: true))
+                        chatRoomViewModel.messagesData.append(Message(UserId: "123", text: message, photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: true))
                         
                     } label: {
                         Image(systemName: "paperplane")

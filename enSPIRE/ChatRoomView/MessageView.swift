@@ -59,5 +59,5 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isFromCurrentUser: false))
+    MessageView(message: Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isCrossField: false,  isFromCurrentUser: false))
 }

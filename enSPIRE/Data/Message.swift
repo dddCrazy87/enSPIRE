@@ -13,6 +13,6 @@ struct Message:Identifiable {
     let text: String
     let photoURL:  String
     let creatAt: Data
-    
+    let isCrossField: Bool
     let isFromCurrentUser:Bool
 }
