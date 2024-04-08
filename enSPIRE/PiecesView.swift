@@ -6,13 +6,13 @@ struct PiecesView: View {
     
     var body: some View {
         
-        ScrollView(.vertical) {
-            VStack {
-                
-                Rectangle()
-                    .frame(height: 250)
-                    .foregroundStyle(Color("YellowColor"))
-                
+        VStack {
+            
+            Rectangle()
+                .frame(height: 250)
+                .foregroundStyle(Color("YellowColor"))
+            
+            ScrollView(.vertical) {
                 
                 HStack {
                     Text(piecesData.title)
