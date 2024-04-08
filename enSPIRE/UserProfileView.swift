@@ -107,11 +107,28 @@ struct UserProfileView: View {
                     
                     ScrollView(.horizontal) {
                         HStack {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 150, height: 400)
+                                    .padding(.vertical, 20)
+                                    .padding(.horizontal, 20)
+                                    .foregroundColor(.white)
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
+                            
                             ForEach(mindmapProj.nodes, id:\.id) { node in
                                 MindMapView(isPreview: true, rootNode: node)
-                                    .frame(width: 150)
+                                    .frame(width: 150, height: 400)
                                     .clipped()
+                                    .padding(.vertical, 20)
                                     .padding(.horizontal, 20)
+                                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                             }
                         }
                     }
@@ -120,15 +137,34 @@ struct UserProfileView: View {
                 else {
                     ScrollView(.horizontal) {
                         HStack {
+                            
+                            NavigationLink {
+                                UploadPiecesView()
+                            } label: {
+                                
+                                ZStack {
+                                    Rectangle()
+                                        .frame(width:100, height: 150)
+                                        .padding(.vertical, 20)
+                                        .padding(.horizontal, 20)
+                                        .foregroundColor(.white)
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
+                            
                             ForEach(piecesProj.pieces, id:\.id) { pieces in
                                 VStack {
                                     Rectangle()
-                                        .frame(width:200, height: 300)
-                                        .padding(.vertical, 50)
+                                        .frame(width:100, height: 150)
+                                        .padding(.top, 50)
+                                        .padding(.bottom, 10)
                                         .padding(.horizontal, 30)
                                         .foregroundColor(.gray)
                                     Text(pieces.title)
                                     
+                                    Spacer()
                                 }
                             }
                         }
@@ -145,8 +181,8 @@ struct UserProfileView: View {
 
 #Preview {
     
-    UserProfileView(userInfo: UserInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), tabIndex: 1, mindmapProj: MindmapProjs(nodes: [
-            Node(text: "影像藝術論期中主題", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA")]),
+    UserProfileView(userInfo: UserInfo(UserId: "1", userName: "桂林仔", photo: "", job: ["通緝犯", "黑道"], habit: ["擲筊", "請示", "開槍"]), tabIndex: 0, mindmapProj: MindmapProjs(nodes: [
+            Node(text: "影像藝術論期中主題", children: [Node(text: "1A"),Node(text: "1AA"),Node(text: "1AAA", children: [Node(text: "a", children: [Node(text: "a", children: [Node(text: "a", children: [Node(text: "a", children: [Node(text: "a")])])])])])]),
             Node(text: "小說劇情", children: [Node(text: "2A"),Node(text: "2AA"),Node(text: "2AA")]),
             Node(text: "推薦的晚餐", children: [Node(text: "3A"),Node(text: "3AAA")]),
             Node(text: "女朋友的生日禮物", children: [Node(text: "4A")]),
