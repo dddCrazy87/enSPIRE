@@ -43,7 +43,7 @@ struct ContentView: View {
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
-                    ChatView(curPage: $curPage)
+                    CoordinatorChatView()
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .gallery:
@@ -101,6 +101,7 @@ struct ContentView: View {
                 }
             }
         }
+        .environmentObject(Coordinator())
     }
 }
 

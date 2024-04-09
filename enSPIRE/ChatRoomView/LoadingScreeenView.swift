@@ -12,11 +12,10 @@ struct LoadingScreeenView: View {
     @State private var opacity = 1.0
     @State private var isLoading = false
     @State private var isActive = false
-    @Binding var curPage: ContentView.PageController
-
+    @EnvironmentObject var coordinator: Coordinator
         var body: some View {
             if isActive {
-                ChatRoomSheetCardView(user: user, curPage: $curPage)
+                ChatRoomSheetCardView(user: user)
             } else{
                 VStack{
                     Spacer()

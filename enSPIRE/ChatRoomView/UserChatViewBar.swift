@@ -9,10 +9,11 @@ import SwiftUI
 
 struct UserChatViewBar: View {
     var user: UserInfo
-    @Binding var curPage: ContentView.PageController
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
-        NavigationLink {
-            ChatRoomView(user: user, curPage: $curPage)
+        Button {
+            coordinator.push(.chatRoom(user: user))
+            print("chatRoom")
         }label: {
             HStack{
                 AnyShape(Circle())

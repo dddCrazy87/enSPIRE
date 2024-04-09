@@ -20,12 +20,12 @@ class userListModle: ObservableObject {
 struct NormalChatView: View {
     @State private var haveNewMessage: Bool = true
     @StateObject var UserListModle = userListModle()
-    @Binding var curPage: ContentView.PageController
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         ScrollView{
             VStack{
                 ForEach(UserListModle.usersListData, id: \.id){ user in
-                    UserChatViewBar(user: user, curPage: $curPage)
+                    UserChatViewBar(user: user)
                 }
             }
         }

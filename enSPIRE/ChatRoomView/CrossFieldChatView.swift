@@ -19,12 +19,12 @@ class crossFieldUserListModle: ObservableObject {
 
 struct CrossFieldChatView: View {
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
-    @Binding var curPage: ContentView.PageController
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         ScrollView{
             VStack{
                 ForEach(CrossFieldUserListModle.usersListData, id: \.id){ user in
-                    UserChatViewBar(user: user, curPage: $curPage)
+                    UserChatViewBar(user: user)
                 }
             }
         }

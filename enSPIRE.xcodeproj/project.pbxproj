@@ -27,6 +27,7 @@
 		F5042C702BB64F380000FF40 /* ChatingProjectSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5042C6F2BB64F380000FF40 /* ChatingProjectSettingView.swift */; };
 		F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */; };
 		F5042C762BB6AB1E0000FF40 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5042C752BB6AB1E0000FF40 /* UserInfo.swift */; };
+		F58A0F552BC5281900F2ED94 /* CoordinatorChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A0F542BC5281900F2ED94 /* CoordinatorChatView.swift */; };
 		F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */; };
 		F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A62BAB1CD500C499C0 /* GridView.swift */; };
 		F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */; };
@@ -82,6 +83,7 @@
 		F5042C6F2BB64F380000FF40 /* ChatingProjectSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatingProjectSettingView.swift; sourceTree = "<group>"; };
 		F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatViewBar.swift; sourceTree = "<group>"; };
 		F5042C752BB6AB1E0000FF40 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F58A0F542BC5281900F2ED94 /* CoordinatorChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChatView.swift; sourceTree = "<group>"; };
 		F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		F5BC97A62BAB1CD500C499C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -133,11 +135,12 @@
 		4238B6692BBB9BED00E8900E /* ChatRoomView */ = {
 			isa = PBXGroup;
 			children = (
+				F58A0F542BC5281900F2ED94 /* CoordinatorChatView.swift */,
 				F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */,
 				F5E9C4B02BBBA13F0021C42E /* AddChatRoomSheetView.swift */,
+				F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */,
 				F5E9C4B42BBBAF510021C42E /* ChatRoomSheetCardView.swift */,
 				F5E9C4B62BBFD5C60021C42E /* PreChatRoomView.swift */,
-				F5E9C4B22BBBA36A0021C42E /* LoadingScreeenView.swift */,
 				F5042C6B2BB5BA9D0000FF40 /* NormalChatView.swift */,
 				F5042C692BB5B80A0000FF40 /* CrossFieldChatView.swift */,
 				F5042C6D2BB5E85D0000FF40 /* EditSheetView.swift */,
@@ -369,6 +372,7 @@
 				F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */,
 				F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */,
 				F5E9C4B72BBFD5C60021C42E /* PreChatRoomView.swift in Sources */,
+				F58A0F552BC5281900F2ED94 /* CoordinatorChatView.swift in Sources */,
 				42DF2E642BC29E6800047BA7 /* PiecesData.swift in Sources */,
 				F5BC97B12BAE8CD000C499C0 /* MessageView.swift in Sources */,
 				F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */,

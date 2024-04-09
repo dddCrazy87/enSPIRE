@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserInfo:Identifiable {
+struct UserInfo:Identifiable, Hashable {
     let id = UUID()
     let UserId: String
     let userName: String
@@ -15,6 +15,12 @@ struct UserInfo:Identifiable {
     var isCrossField: Bool = false
     var job: [String] = []
     var habit: [String] = []
+    
+    func hash(into hasher: inout Hasher){
+        hasher.combine(UserId)
+        hasher.combine(userName)
+        hasher.combine(photo)
+    }
 }
 
 class MindmapProjs: ObservableObject {

@@ -6,22 +6,21 @@
 //
 
 import SwiftUI
+import Observation
 
 struct ChatView: View {
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
-    @Binding var curPage: ContentView.PageController
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
-        NavigationStack {
-            VStack{
-                ChatingProjectSettingView()
-                CustomTopTabBar(tabIndex: $tabIndex)
-                if tabIndex == 0 {
-                    NormalChatView(curPage: $curPage)
-                }
-                else {
-                    CrossFieldChatView(curPage: $curPage)
-                }
+        VStack{
+            ChatingProjectSettingView()
+            CustomTopTabBar(tabIndex: $tabIndex)
+            if tabIndex == 0 {
+                NormalChatView()
+            }
+            else {
+                CrossFieldChatView()
             }
         }
         .navigationTitle("討論室")
@@ -32,17 +31,20 @@ struct ChatView: View {
                 Button{
                     showEditSheet.toggle()
                 }label: {
-                   Image(systemName: "square.and.pencil")
+                    Image(systemName: "square.and.pencil")
                 }
                 .sheet(isPresented: $showEditSheet){
                     EditSheetView(showEditSheet: $showEditSheet)
                 }
-                NavigationLink{
-                    AddChatRoomSheetView(curPage: $curPage)
-                }label: {
+                Button{
+                    coordinator.push(.addChatRoom)
+                    print("addChatRoom")
+                    print(coordinator.paths)
+                }label:{
                    Image(systemName: "person.crop.circle.badge.plus")
                 }
-            
+                
+                
             }
         }
     }

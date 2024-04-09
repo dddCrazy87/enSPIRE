@@ -6,20 +6,19 @@
 //
 
 import SwiftUI
+import Observation
 
 struct AddChatRoomSheetView: View {
-    @State var tabIndex = 0
-    @Binding var curPage: ContentView.PageController
+    @State var TabIndex = 0
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
-        NavigationStack{
-            VStack{
-                CustomSheetTopTabBar(tabIndex: $tabIndex)
-                if tabIndex == 0 {
-                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ), curPage: $curPage)
-                }
-                else {
-                    LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ), curPage: $curPage)
-                }
+        VStack{
+            CustomSheetTopTabBar(tabIndex: $TabIndex)
+            if TabIndex == 0 {
+                LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
+            }
+            else {
+                LoadingScreeenView(user: UserInfo(UserId: "123", userName: "okok", photo: "", job: ["老師", "商品設計師"], habit: ["看書", "釣魚"] ))
             }
         }
         .navigationTitle("新增討論室")

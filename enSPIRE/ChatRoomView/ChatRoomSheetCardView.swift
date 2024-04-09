@@ -12,7 +12,7 @@ struct ChatRoomSheetCardView: View {
     @State private var showDetials: Bool = false
     @State private var offset: CGSize = .zero
     @State private var check: Bool = false
-    @Binding var curPage: ContentView.PageController
+    @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -106,10 +106,6 @@ struct ChatRoomSheetCardView: View {
             .shadow(radius: 5)
             .offset(offset)
             .scaleEffect(getScaleAmount())
-//            .overlay{
-//                Rectangle()
-//                    .background(Color("OrangeColor").opacity(0.5))
-//            }
             .gesture(
                 DragGesture()
                     .onChanged{ value in
@@ -138,8 +134,8 @@ struct ChatRoomSheetCardView: View {
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 }
                 .padding()
-                NavigationLink{
-                    PreChatRoomView(user: user, curPage: $curPage)
+                Button{
+                    coordinator.push(.preChat(user: user))
                 }label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 30, weight: .bold))
@@ -151,11 +147,9 @@ struct ChatRoomSheetCardView: View {
                 .padding()
             }
         }
-        
         .padding()
         .padding(.top, 30)
         .background(Color("YellowColor"))
-        
         
     }
     func getScaleAmount() -> CGFloat  {
