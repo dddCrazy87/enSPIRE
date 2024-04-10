@@ -1,9 +1,8 @@
 import SwiftUI
+import ImageIO
 
 struct GridItem: Identifiable {
     var id = UUID()
-    
-    let height: CGFloat
     let title: String
 }
 
@@ -39,7 +38,7 @@ struct GridView: View {
                 }
             }
             columns[smallestColumnIndex].gridItems.append(gridItem)
-            columnsHeight[smallestColumnIndex] += gridItem.height
+            columnsHeight[smallestColumnIndex] += 100
         }
         self.columns = columns
     }
@@ -49,24 +48,21 @@ struct GridView: View {
             ForEach(columns){ column in
                 LazyVStack(spacing: spacing){
                     ForEach(column.gridItems){ gridItem in
-                        Rectangle()
-                            .foregroundStyle(Color("YellowColor"))
-                            .frame(height: gridItem.height)
-                            .overlay {
-                                Text(gridItem.title)
-                                    .font(.system(size: 20, weight: .bold))
-                            }
+                        getItemView(gridItem: gridItem)
                     }
                 }
             }
         }
         .padding(.horizontal, horizontalPadding)
     }
+    
+    func getItemView(gridItem: GridItem) -> some View {
+        ZStack {
+            Image(gridItem.title)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
 }
 
-#Preview {
-    var gridItems = [GridItem]()
-    let randomHeight = CGFloat.random(in: 100 ... 400)
-    gridItems.append(GridItem(height: randomHeight, title: "0"))
-    return GridView(gridItems: gridItems, numberOfColumns: 2)
-}

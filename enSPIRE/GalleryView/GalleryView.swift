@@ -2,13 +2,24 @@ import Foundation
 import SwiftUI
 
 struct GalleryView: View {
+    
+    let gridItems = [
+        GridItem(title: "img2"),
+        GridItem(title: "img7"),
+        GridItem(title: "img6"),
+        GridItem(title: "img4"),
+        GridItem(title: "img5"),
+        GridItem(title: "img11"),
+        GridItem(title: "img3"),
+        GridItem(title: "img10"),
+        GridItem(title: "img8"),
+        GridItem(title: "img9"),
+        GridItem(title: "img1"),
+        GridItem(title: "img12")
+    ]
+    
     var body: some View {
-        var gridItems = [GridItem]()
-        for i in 0 ..< 50{
-            let randomHeight = CGFloat.random(in: 80 ... 400)
-            gridItems.append(GridItem(height: randomHeight, title: String(i)))
-        }
-        return NavigationStack {
+        NavigationStack {
             ScrollView{
                 GridView(gridItems: gridItems, numberOfColumns: 2)
             }
