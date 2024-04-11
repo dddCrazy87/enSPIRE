@@ -165,7 +165,6 @@
 			children = (
 				F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */,
 				F5BC97A62BAB1CD500C499C0 /* GridView.swift */,
-				428FBDD82BC78B1700C4068F /* UserProfileView */,
 			);
 			path = GalleryView;
 			sourceTree = "<group>";
@@ -187,6 +186,7 @@
 				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
 				428FBDD92BC78B4800C4068F /* PiecesProjView.swift */,
 				428FBDDB2BC78B6100C4068F /* MindMapProjView.swift */,
+				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
 			);
 			path = UserProfileView;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 				4238B6682BBB9BDD00E8900E /* MindMapView */,
 				4238B6692BBB9BED00E8900E /* ChatRoomView */,
 				4238B66A2BBB9C4100E8900E /* GalleryView */,
-				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
+				428FBDD82BC78B1700C4068F /* UserProfileView */,
 				42DF2E612BC29D9300047BA7 /* PiecesView.swift */,
 				F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */,
 				42B61D452BA940DB0058A48D /* Preview Content */,
