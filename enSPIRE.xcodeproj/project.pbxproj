@@ -28,6 +28,7 @@
 		F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */; };
 		F5042C762BB6AB1E0000FF40 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5042C752BB6AB1E0000FF40 /* UserInfo.swift */; };
 		F58A0F552BC5281900F2ED94 /* CoordinatorChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A0F542BC5281900F2ED94 /* CoordinatorChatView.swift */; };
+		F58A0F5E2BC7762700F2ED94 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A0F5D2BC7762700F2ED94 /* ChatRoomViewModel.swift */; };
 		F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */; };
 		F5BC97A72BAB1CD500C499C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97A62BAB1CD500C499C0 /* GridView.swift */; };
 		F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */; };
@@ -84,6 +85,7 @@
 		F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatViewBar.swift; sourceTree = "<group>"; };
 		F5042C752BB6AB1E0000FF40 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F58A0F542BC5281900F2ED94 /* CoordinatorChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorChatView.swift; sourceTree = "<group>"; };
+		F58A0F5D2BC7762700F2ED94 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		F5BC97A42BAB0F2400C499C0 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		F5BC97A62BAB1CD500C499C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		F5BC97AC2BAE6D2A00C499C0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				F5042C732BB6A7F10000FF40 /* UserChatViewBar.swift */,
 				F5BC97AE2BAE6D3900C499C0 /* ChatRoomView.swift */,
 				F5E9C4AE2BBB0A8A0021C42E /* ChatRoomMessageView.swift */,
+				F58A0F5D2BC7762700F2ED94 /* ChatRoomViewModel.swift */,
 				F5BC97B02BAE8CD000C499C0 /* MessageView.swift */,
 			);
 			path = ChatRoomView;
@@ -383,6 +386,7 @@
 				F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */,
 				42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */,
 				F5042C702BB64F380000FF40 /* ChatingProjectSettingView.swift in Sources */,
+				F58A0F5E2BC7762700F2ED94 /* ChatRoomViewModel.swift in Sources */,
 				F5042C762BB6AB1E0000FF40 /* UserInfo.swift in Sources */,
 				42E9F46A2BAACBFC00C3FB65 /* UploadPiecesView.swift in Sources */,
 				428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */,

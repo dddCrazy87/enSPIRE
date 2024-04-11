@@ -6,61 +6,55 @@
 //
 import SwiftUI
 
-class ChatRoomViewModle: ObservableObject {
-    @Published var messages = [Message]()
-    
-    @Published var messagesData = [
-        Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(),isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "哈囉！你好嗎？", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "我跟你說一件很有趣的事情喔！", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false),
-       Message(UserId: "123", text: "就是", photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: false)
-    ]
-}
-
 struct ChatRoomMessageView: View {
     @State private var message: String = ""
     private var sendMessage: String = ""
     @StateObject var chatRoomViewModel = ChatRoomViewModle()
 
     var body: some View {
-            VStack {
+        VStack {
+            ScrollViewReader { scrollView in
                 ScrollView{
                     Spacer()
                     VStack(spacing: 10) {
-                        ForEach(chatRoomViewModel.messagesData){ message in
+                        ForEach(Array(chatRoomViewModel.messagesData.enumerated()), id: \.element){ idx, message in
                             MessageView(message: message)
+                                .id(idx)
+                        }
+                        .onChange(of: chatRoomViewModel.messagesData){ newvalue in
+                            withAnimation {
+                                scrollView.scrollTo(chatRoomViewModel.messagesData.count - 1, anchor: .bottom)
+                            }
                         }
                     }
                 }
-                .padding()
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-                HStack{
-                    TextField(
-                            "Message",
-                            text: $message,
-                            axis: .vertical
-                    )
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
                     
-                        
-                    Button {
-                        print("send")
-                        chatRoomViewModel.messagesData.append(Message(UserId: "123", text: message, photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: true))
-                        
-                    } label: {
-                        Image(systemName: "paperplane")
-                            .foregroundStyle(Color.black)
-                    }
-                }
-                .padding(.horizontal)
             }
+            .padding()
             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            HStack{
+                TextField(
+                    "Message",
+                    text: $message,
+                    axis: .vertical
+                )
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                
+                
+                Button {
+                    print("send")
+                    chatRoomViewModel.messagesData.append(Message(UserId: "123", text: message, photoURL: "", creatAt: Data(), isCrossField: false, isFromCurrentUser: true))
+                    message = ""
+                    
+                } label: {
+                    Image(systemName: "paperplane")
+                        .foregroundStyle(Color.black)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
     }
 }
 
