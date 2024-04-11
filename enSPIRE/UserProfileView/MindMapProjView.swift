@@ -85,6 +85,7 @@ struct MindMapProj: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .foregroundColor(.black)
+                .disabled(true)
         }
         
     }
