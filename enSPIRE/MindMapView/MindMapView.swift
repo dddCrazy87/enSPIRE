@@ -73,7 +73,6 @@ struct MindMapView: View {
                             Spacer()
                         }
                     }
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 }
             }
             .coordinateSpace(name: "Mind Map View")
