@@ -56,7 +56,6 @@ struct MindMapView: View {
                                     })
                                     .onEnded({ (value) in
                                         curScale *= max(0.5, min(value, 2.5))
-                                        print(curScale)
                                     })
                             )
                         )
@@ -155,6 +154,13 @@ struct MindMapView: View {
                 }
             }
         }
+        .onAppear() {
+            if rootNode.children.count != 0 {
+                isFirstNode = false
+                rootNodeText = rootNode.text
+                rootNodeTextSize = rootNodeText.count
+            }
+        }
     }
 }
 
@@ -164,7 +170,7 @@ struct MindMapView: View {
 #Preview {
     NavigationStack {
 //        MindMapView(isPreview: false, rootNode: Node(text: "a"))
-        MindMapView(isPreview: true, rootNode: Node(text: "Root", children: [Node(text: "aaa"),Node(text: "aa", children: [Node(text: "aaaa"),Node(text: "a",children: [Node(text: "aaa"),Node(text: "a", children: [Node(text: "aaa")])])])]))
+        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "aaa"),Node(text: "aa", children: [Node(text: "aaaa"),Node(text: "a",children: [Node(text: "aaa"),Node(text: "a", children: [Node(text: "aaa")])])])]))
 //        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaaaa", children: [Node(text: "aaaaaaaaaaa")])])])])])])])]),Node(text: "a")]))
     }
 }

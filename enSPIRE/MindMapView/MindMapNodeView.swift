@@ -89,7 +89,6 @@ struct MindMapNodeView: View {
                     Color.clear
                         .onAppear() {
                             downSpace = geo.frame(in: .named("Mind Map View")).height
-                            print(topSpace, downSpace)
                         }
                         .onChange(of: geo.frame(in: .named("Mind Map View"))) {
                             downSpace = geo.frame(in: .named("Mind Map View")).height
