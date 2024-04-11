@@ -73,106 +73,11 @@ struct UserProfileView: View {
                 CustomTopTabBar2(tabIndex: $tabIndex)
                 
                 if tabIndex == 0 {
-                    ScrollView(.vertical) {
-                        VStack {
-                            
-                            ForEach(mindmapProj.nodes.indices, id: \.self) { index in
-                                HStack {
-                                    Spacer()
-                                    
-                                    if index % 2 == 0 {
-                                        MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index])
-                                            .frame(width: 180, height: 180)
-                                            .clipped()
-                                            .padding(.vertical, 40)
-                                            .background(Color.white)
-                                        
-                                        if index + 1 < mindmapProj.nodes.count {
-                                            MindMapView(isPreview: true, rootNode: mindmapProj.nodes[index+1])
-                                                .frame(width: 180, height: 180)
-                                                .clipped()
-                                                .padding(.vertical, 40)
-                                                .background(Color.white)
-                                        }
-                                        else {
-                                            Spacer().frame(width: 180, height: 180)
-                                        }
-                                    }
-                                    
-                                    Spacer()
-                                }
-                            }
-                                
-                        }
-                    }
-                    .background(Color("YellowColor"))
                     
-//                    ScrollView(.horizontal) {
-//                        HStack {
-//                            ZStack {
-//                                Rectangle()
-//                                    .frame(width: 150, height: 400)
-//                                    .padding(.vertical, 20)
-//                                    .padding(.horizontal, 20)
-//                                    .foregroundColor(.white)
-//                                Button {
-//                                    
-//                                } label: {
-//                                    Image(systemName: "plus")
-//                                        .resizable()
-//                                        .frame(width: 50, height: 50)
-//                                }
-//                            }
-//                            
-//                            ForEach(mindmapProj.nodes, id:\.id) { node in
-//                                MindMapView(isPreview: true, rootNode: node)
-//                                    .frame(width: 150, height: 400)
-//                                    .clipped()
-//                                    .padding(.vertical, 20)
-//                                    .padding(.horizontal, 20)
-//                                Rectangle()
-//                                    .frame(width: 1, height: 400)
-//                            }
-//                        }
-//                    }
-//                    .background(Color("YellowColor"))
+                    MindMapProjView(mindmapProj: mindmapProj)
                 }
                 else {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            
-                            NavigationLink {
-                                UploadPiecesView()
-                            } label: {
-                                
-                                ZStack {
-                                    Rectangle()
-                                        .frame(width:100, height: 150)
-                                        .padding(.vertical, 20)
-                                        .padding(.horizontal, 20)
-                                        .foregroundColor(.white)
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                }
-                            }
-                            
-                            ForEach(piecesProj.pieces, id:\.id) { pieces in
-                                VStack {
-                                    Rectangle()
-                                        .frame(width:100, height: 150)
-                                        .padding(.top, 50)
-                                        .padding(.bottom, 10)
-                                        .padding(.horizontal, 30)
-                                        .foregroundColor(.gray)
-                                    Text(pieces.title)
-                                    
-                                    Spacer()
-                                }
-                            }
-                        }
-                    }
-                    .background(Color("YellowColor"))
+                    PiecesProjView(piecesProj: piecesProj)
                 }
                 
             }
@@ -211,3 +116,6 @@ struct CustomTopTabBar2: View {
         }
     }
 }
+
+
+
