@@ -11,6 +11,9 @@
 		428986642BADE8CA00FE8DB8 /* MindMapNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */; };
 		428F06E12BAD25D50030C286 /* MindMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F06E02BAD25D50030C286 /* MindMapView.swift */; };
 		428F06E32BAD283E0030C286 /* MindMapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F06E22BAD283E0030C286 /* MindMapData.swift */; };
+		428FBDDA2BC78B4800C4068F /* PiecesProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428FBDD92BC78B4800C4068F /* PiecesProjView.swift */; };
+		428FBDDC2BC78B6100C4068F /* MindMapProjView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428FBDDB2BC78B6100C4068F /* MindMapProjView.swift */; };
+		428FBDDE2BC78BE000C4068F /* NodeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428FBDDD2BC78BE000C4068F /* NodeLineView.swift */; };
 		42B61D402BA940DA0058A48D /* enSPIREApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */; };
 		42B61D422BA940DA0058A48D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B61D412BA940DA0058A48D /* ContentView.swift */; };
 		42B61D472BA940DB0058A48D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B61D462BA940DB0058A48D /* Preview Assets.xcassets */; };
@@ -65,6 +68,9 @@
 		428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapNodeView.swift; sourceTree = "<group>"; };
 		428F06E02BAD25D50030C286 /* MindMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapView.swift; sourceTree = "<group>"; };
 		428F06E22BAD283E0030C286 /* MindMapData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapData.swift; sourceTree = "<group>"; };
+		428FBDD92BC78B4800C4068F /* PiecesProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiecesProjView.swift; sourceTree = "<group>"; };
+		428FBDDB2BC78B6100C4068F /* MindMapProjView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindMapProjView.swift; sourceTree = "<group>"; };
+		428FBDDD2BC78BE000C4068F /* NodeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeLineView.swift; sourceTree = "<group>"; };
 		42B61D3C2BA940DA0058A48D /* enSPIRE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = enSPIRE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B61D3F2BA940DA0058A48D /* enSPIREApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enSPIREApp.swift; sourceTree = "<group>"; };
 		42B61D412BA940DA0058A48D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 			children = (
 				428F06E02BAD25D50030C286 /* MindMapView.swift */,
 				428986632BADE8CA00FE8DB8 /* MindMapNodeView.swift */,
+				428FBDDD2BC78BE000C4068F /* NodeLineView.swift */,
 			);
 			path = MindMapView;
 			sourceTree = "<group>";
@@ -176,6 +183,17 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		428FBDD82BC78B1700C4068F /* UserProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
+				428FBDD92BC78B4800C4068F /* PiecesProjView.swift */,
+				428FBDDB2BC78B6100C4068F /* MindMapProjView.swift */,
+				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
+			);
+			path = UserProfileView;
+			sourceTree = "<group>";
+		};
 		42B61D332BA940DA0058A48D = {
 			isa = PBXGroup;
 			children = (
@@ -206,8 +224,7 @@
 				4238B6682BBB9BDD00E8900E /* MindMapView */,
 				4238B6692BBB9BED00E8900E /* ChatRoomView */,
 				4238B66A2BBB9C4100E8900E /* GalleryView */,
-				4229B29C2BAAC3B300183BCE /* UserProfileView.swift */,
-				42E9F4692BAACBFC00C3FB65 /* UploadPiecesView.swift */,
+				428FBDD82BC78B1700C4068F /* UserProfileView */,
 				42DF2E612BC29D9300047BA7 /* PiecesView.swift */,
 				F5BC982A2BB1B1DE00C499C0 /* Assets.xcassets */,
 				42B61D452BA940DB0058A48D /* Preview Content */,
@@ -374,6 +391,8 @@
 			files = (
 				F5E9C4B12BBBA13F0021C42E /* AddChatRoomSheetView.swift in Sources */,
 				F5E9C4B32BBBA36A0021C42E /* LoadingScreeenView.swift in Sources */,
+				428FBDDE2BC78BE000C4068F /* NodeLineView.swift in Sources */,
+				428FBDDA2BC78B4800C4068F /* PiecesProjView.swift in Sources */,
 				F5E9C4B72BBFD5C60021C42E /* PreChatRoomView.swift in Sources */,
 				F58A0F552BC5281900F2ED94 /* CoordinatorChatView.swift in Sources */,
 				42DF2E642BC29E6800047BA7 /* PiecesData.swift in Sources */,
@@ -381,6 +400,7 @@
 				F5042C742BB6A7F10000FF40 /* UserChatViewBar.swift in Sources */,
 				42DF2E622BC29D9300047BA7 /* PiecesView.swift in Sources */,
 				42B61D422BA940DA0058A48D /* ContentView.swift in Sources */,
+				428FBDDC2BC78B6100C4068F /* MindMapProjView.swift in Sources */,
 				F5BC97A52BAB0F2400C499C0 /* GalleryView.swift in Sources */,
 				F5042C6C2BB5BA9D0000FF40 /* NormalChatView.swift in Sources */,
 				F5BC97AD2BAE6D2A00C499C0 /* ChatView.swift in Sources */,
