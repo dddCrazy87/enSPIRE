@@ -91,7 +91,7 @@ struct LaunchScreenView: View {
                 withAnimation(.easeInOut(duration: 2).delay(3).speed(1.3)){
                     self.backgroundColor = Color.white.opacity(0)
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.8){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.4){
                     self.isActive = true
                 }
             }

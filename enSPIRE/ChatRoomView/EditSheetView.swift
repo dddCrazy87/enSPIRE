@@ -14,6 +14,9 @@ struct EditSheetView: View {
     @State private var nickNameMessage: String = ""
     @State private var jobMessage: String = ""
     @State private var habitMessage: String = ""
+    @FocusState var isNameFocus: Bool
+    @FocusState var isJobFocus: Bool
+    @FocusState var isHabitFocus: Bool
     var body: some View {
         VStack {
             HStack{
@@ -54,6 +57,7 @@ struct EditSheetView: View {
                                 text: $nickNameMessage,
                                 axis: .vertical
                         )
+                        .focused($isNameFocus)
                     }
                     .padding(.horizontal)
                     .font(.system(size: 16, weight: .semibold))
@@ -69,6 +73,7 @@ struct EditSheetView: View {
                                 text: $jobMessage,
                                 axis: .vertical
                         )
+                        .focused($isJobFocus)
                     }
                     .padding(.horizontal)
                     .font(.system(size: 16, weight: .semibold))
@@ -84,6 +89,7 @@ struct EditSheetView: View {
                                 text: $habitMessage,
                                 axis: .vertical
                         )
+                        .focused($isHabitFocus)
                     }
                     .padding(.horizontal)
                     .font(.system(size: 16, weight: .semibold))
@@ -126,6 +132,11 @@ struct EditSheetView: View {
             .buttonStyle(.borderedProminent)
             .tint(Color("Yellow2Color"))
             .padding()
+        }
+        .onTapGesture {
+            isJobFocus = false
+            isHabitFocus = false
+            isNameFocus = false
         }
     }
 }

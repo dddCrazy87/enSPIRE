@@ -10,6 +10,7 @@ struct ChatRoomMessageView: View {
     @State private var message: String = ""
     private var sendMessage: String = ""
     @StateObject var chatRoomViewModel = ChatRoomViewModle()
+    @FocusState var isMessageFocus: Bool
 
     var body: some View {
         VStack {
@@ -28,6 +29,9 @@ struct ChatRoomMessageView: View {
                         }
                     }
                 }
+                .onTapGesture {
+                    isMessageFocus = false
+                }
                     
             }
             .padding()
@@ -40,6 +44,7 @@ struct ChatRoomMessageView: View {
                 )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
+                .focused($isMessageFocus)
                 
                 
                 Button {
