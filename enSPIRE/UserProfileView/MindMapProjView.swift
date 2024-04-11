@@ -84,6 +84,7 @@ struct MindMapProj: View {
                 .padding(.vertical, 10)
                 .background(Color.white)
                 .cornerRadius(10)
+                .foregroundColor(.black)
         }
         
     }
