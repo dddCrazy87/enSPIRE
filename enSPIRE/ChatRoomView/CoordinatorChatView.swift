@@ -67,5 +67,5 @@ struct CoordinatorChatView: View {
 }
 
 #Preview {
-    CoordinatorChatView()
+    ContentView()
 }

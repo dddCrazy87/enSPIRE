@@ -28,7 +28,7 @@ struct ChatRoomView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 20, height: 20)
-                        .foregroundStyle(Color.black)
+                        .foregroundStyle(Color.blue)
                 }
                 
             }

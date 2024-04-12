@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MindMapView: View {
-    
+    @FocusState var isMessageFocus: Bool
     @Binding var curPage: ContentView.PageController
     @State var isPreview: Bool
     
@@ -98,6 +98,7 @@ struct MindMapView: View {
                     TextField("寫下你的想法...", text: $input)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .frame(width: 250, height: 60)
+                        .focused($isMessageFocus)
                         .onSubmit {
                             nodeText = input
                             if nodeText != "" {
@@ -182,6 +183,9 @@ struct MindMapView: View {
                 rootNodeText = rootNode.text
                 rootNodeTextSize = rootNodeText.count
             }
+        }
+        .onTapGesture {
+            isMessageFocus = false
         }
     }
 }
