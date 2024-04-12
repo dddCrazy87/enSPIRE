@@ -75,11 +75,18 @@ struct UserProfileView: View {
                 CustomTopTabBar2(tabIndex: $tabIndex)
                 
                 if tabIndex == 0 {
-                    
-                    MindMapProjView(mindmapProj: mindmapProj, mindMap_editing: mindMap_editing, curPage: $curPage)
+                    VStack {
+                        MindMapProjView(mindmapProj: mindmapProj, mindMap_editing: mindMap_editing, curPage: $curPage)
+                    }
+                    .padding()
+                    .background(Color("YellowColor"))
                 }
                 else {
-                    PiecesProjView(piecesProj: piecesProj)
+                    VStack {
+                        PiecesProjView(piecesProj: piecesProj)
+                    }
+                    .padding()
+                    .background(Color("YellowColor"))
                 }
                 
             }
