@@ -78,7 +78,7 @@ struct MindMapProj: View {
             mindMap_editing.children = node.children
             curPage = .mindmap
         } label: {
-            MindMapView(isPreview: true, rootNode: node)
+            MindMapView(curPage: $curPage, isPreview: true, rootNode: node)
                 .frame(width: 180, height: 240)
                 .clipped()
                 .padding(.vertical, 10)

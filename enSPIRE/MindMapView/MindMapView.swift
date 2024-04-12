@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MindMapView: View {
     
+    @Binding var curPage: ContentView.PageController
     @State var isPreview: Bool
     
     // rootNode style
@@ -145,12 +146,15 @@ struct MindMapView: View {
                         Menu {
                             
                             Button {
-                                
+                                curPage = .profile
                             } label: {
-                                Text("選擇其他專案")
+                                Text("選擇現有專案")
                             }
                             Button {
-                                
+                                rootNode.children = []
+                                isFirstNode = true
+                                rootNodeTextSize = 6
+                                rootNodeText = "寫下主題吧！"
                             } label: {
                                 Text("新增空白專案")
                             }
@@ -188,8 +192,8 @@ struct MindMapView: View {
 #Preview {
     NavigationStack {
 //        MindMapView(isPreview: false, rootNode: Node(text: "a"))
-        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "aaa"),Node(text: "aa", children: [Node(text: "aaaa"),Node(text: "a",children: [Node(text: "aaa"),Node(text: "a", children: [Node(text: "aaa")])])])]))
+//        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "aaa"),Node(text: "aa", children: [Node(text: "aaaa"),Node(text: "a",children: [Node(text: "aaa"),Node(text: "a", children: [Node(text: "aaa")])])])]))
 //        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaaaa", children: [Node(text: "aaaaaaaaaaa")])])])])])])])]),Node(text: "a")]))
-//        ContentView()
+        ContentView()
     }
 }

@@ -40,7 +40,7 @@ struct ContentView: View {
                 case .logout:
                     Text("logout page")
                 case .mindmap:
-                    MindMapView(isPreview: false, rootNode: mindMap_editing)
+                    MindMapView(curPage: $curPage, isPreview: false, rootNode: mindMap_editing)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
