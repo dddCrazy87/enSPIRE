@@ -4,6 +4,7 @@ struct ContentView: View {
     
     enum PageController {
         case login
+        case logout
         case signin
         case mindmap
         case chat
@@ -34,10 +35,10 @@ struct ContentView: View {
             VStack {
                 
                 switch curPage {
-    //                case .login:
-    //                    <#code#>
-    //                case .signin:
-    //                    <#code#>
+                case .login:
+                    Text("login page")
+                case .logout:
+                    Text("logout page")
                 case .mindmap:
                     MindMapView(isPreview: false, rootNode: mindMap_editing)
                         .toolbarBackground(.visible, for: .bottomBar)

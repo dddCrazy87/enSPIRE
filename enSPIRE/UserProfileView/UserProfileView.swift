@@ -28,7 +28,6 @@ struct UserProfileView: View {
                             .scaledToFit()
                             .frame(height:80)
                     }
-                        
                     
                     VStack(alignment: .leading){
                         
@@ -86,6 +85,24 @@ struct UserProfileView: View {
             }
             .navigationTitle(userInfo.userName)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if isLogin {
+                        Button {
+                            curPage = .logout
+                        } label: {
+                            Text("登出")
+                        }
+                    }
+                    else {
+                        Button {
+                            curPage = .login
+                        } label: {
+                            Text("登入")
+                        }
+                    }
+                }
+            }
         }
     }
 }

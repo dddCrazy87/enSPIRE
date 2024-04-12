@@ -38,3 +38,5 @@ class PiecesProjs: ObservableObject {
         self.pieces = pieces
     }
 }
+
+var isLogin: Bool = true
