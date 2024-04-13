@@ -27,7 +27,7 @@ struct MindMapProjView: View {
                             
                             Button {
                                 mindMap_editing.text = "root"
-                                mindMap_editing.hintText = "root"
+                                mindMap_editing.hintText = ["root"]
                                 mindMap_editing.children = []
                                 curPage = .mindmap
                             } label: {
@@ -87,7 +87,6 @@ struct MindMapProj: View {
                 .foregroundColor(.black)
                 .disabled(true)
         }
-        
     }
 }
 

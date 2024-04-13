@@ -44,7 +44,7 @@ struct MindMapNodeView: View {
             
             ZStack {
                 Rectangle()
-                    .frame(width: min(120, Double(rootNodeTextSize)*20), height: max(50, Double(rootNodeTextSize/6)*50))
+                    .frame(width: min(130, Double(rootNodeTextSize)*25), height: max(50, Double(rootNodeTextSize/6)*50))
                     .cornerRadius(20)
                     .foregroundColor(.yellow)
                     .overlay(
@@ -61,7 +61,7 @@ struct MindMapNodeView: View {
                     )
                 
                 Text(rootNodeText)
-                    .frame(width: 100)
+                    .frame(width: 110)
                     .lineLimit(3)
                     .bold()
                     .opacity(isBlinking && isFirstNode ? 0.0 : 1.0)

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ChatingProjectSettingView: View {
+    
+    @Binding var curPage: ContentView.PageController
+    @Binding var mindMap:MindMapPreview
+    
     var body: some View {
         HStack{
             Circle()
@@ -20,15 +24,23 @@ struct ChatingProjectSettingView: View {
         .padding(.horizontal)
         .padding(.top, 20)
         HStack{
-            RoundedRectangle(cornerRadius: 10)
+//            RoundedRectangle(cornerRadius: 10)
+//                .frame(width: 120, height: 80)
+//                .foregroundStyle(Color.yellow)
+//                .padding(.trailing)
+            MindMapView(curPage: $curPage, isPreview: true, rootNode: mindMap.node)
                 .frame(width: 120, height: 80)
-                .foregroundStyle(Color.yellow)
+                .clipped()
                 .padding(.trailing)
+                .cornerRadius(10)
+                .foregroundColor(.black)
+                .disabled(true)
+            
             VStack(alignment: .leading){
-                Text("心智圖標題")
+                Text(mindMap.title)
                     .font(.system(size: 20, weight: .semibold))
                     .padding(.bottom, 8)
-                Text("描述你的心智圖內容描述你的心智圖內容描述你的心智圖內容描述你的心智圖內容")
+                Text(mindMap.des)
                     .font(.system(size: 14))
                     .lineLimit(2)
             }
@@ -40,5 +52,5 @@ struct ChatingProjectSettingView: View {
 }
 
 #Preview {
-    ChatingProjectSettingView()
+    ChatView()
 }

@@ -11,12 +11,18 @@ struct EditSheetView: View {
     @Binding var showEditSheet: Bool
     @State private var titleMessage: String = ""
     @State private var infoMessage: String = ""
-    @State private var nickNameMessage: String = ""
-    @State private var jobMessage: String = ""
-    @State private var habitMessage: String = ""
+    @State private var nickNameMessage: String = "Wayne"
+    @State private var jobMessage: String = "甜點師傅"
+    @State private var habitMessage: String = "品嚐甜點 下廚"
     @FocusState var isNameFocus: Bool
     @FocusState var isJobFocus: Bool
     @FocusState var isHabitFocus: Bool
+    
+    @State var flag = true
+    @State var curPage: ContentView.PageController = .chat
+    let mindMap2 = MindMapPreview(title: "適合小孩的點心食譜", des: "這是一個點心食譜", node: Node(text: "適合小孩吃的點心食譜", children: [Node(text: "甜甜的"), Node(text: "下午放學後")]))
+    @Binding var mindMap:MindMapPreview
+    
     var body: some View {
         VStack {
             HStack{
@@ -33,18 +39,36 @@ struct EditSheetView: View {
             .padding(.horizontal, 30)
             .padding(.vertical)
             ScrollView{
-                ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
-                    Rectangle()
-                        .frame(height: 250)
-                        .foregroundStyle(Color("YellowColor"))
-                    Text("其他專案")
-                        .font(.system(size: 14))
-                        .padding(12)
-                        .background(Color("Yellow2Color"))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .offset(x: -15, y: -15)
-                        
+                if flag {
+                    ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
+                        Rectangle()
+                            .frame(height: 250)
+                            .foregroundStyle(Color("YellowColor"))
+                        Button {
+                            titleMessage = mindMap2.title
+                            infoMessage = mindMap2.des
+                            flag = false
+                        } label: {
+                            Text("其他專案")
+                                .font(.system(size: 14))
+                                .padding(12)
+                                .background(Color("Yellow2Color"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .offset(x: -15, y: -15)
+                                .foregroundColor(.black)
+                        }
+                    }
                 }
+                else {
+                    MindMapView(curPage: $curPage, isPreview: true, rootNode: mindMap2.node)
+                        .frame(height: 250)
+                        .clipped()
+                        .background(Color("YellowColor"))
+                        .cornerRadius(10)
+                        .foregroundColor(.black)
+                        .disabled(true)
+                }
+                
                 VStack(alignment: .leading){
                     HStack{
                         Image("PersonIcon")
@@ -122,7 +146,8 @@ struct EditSheetView: View {
             }
             
             Button{
-                
+                mindMap = mindMap2
+                showEditSheet = false
             }label: {
                 Text("儲存")
                     .frame(width: 360, height: 30)
@@ -139,4 +164,16 @@ struct EditSheetView: View {
             isNameFocus = false
         }
     }
+}
+
+struct MyView: View {
+    @State var a = true
+    @State var m = MindMapPreview(title: "心智圖標題", des: "描述你的心智圖內容", node: Node(text: "選擇一個心智圖吧", children: [Node(text: "aaa"), Node(text: "aaa"), Node(text: "aaa")]))
+    var body: some View {
+        EditSheetView(showEditSheet: $a, mindMap: $m)
+    }
+}
+
+#Preview {
+    MyView()
 }

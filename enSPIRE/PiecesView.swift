@@ -8,9 +8,10 @@ struct PiecesView: View {
         
         VStack {
             
-            Rectangle()
+            Image(piecesData.image)
+                .resizable()
+                .scaledToFit()
                 .frame(height: 250)
-                .foregroundStyle(Color("YellowColor"))
             
             ScrollView(.vertical) {
                 

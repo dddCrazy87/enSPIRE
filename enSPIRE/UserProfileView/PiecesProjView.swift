@@ -78,12 +78,16 @@ struct PiecesProj: View {
                     .cornerRadius(10)
                 VStack {
                     ZStack {
-                        Rectangle()
+//                        Rectangle()
+//                            .frame(width: 120, height: 150)
+//                            .cornerRadius(10)
+//                            .foregroundColor(.gray)
+//                        Text(piece.image)
+//                            .foregroundColor(.black)
+                        Image(piece.image)
+                            .resizable()
+                            .scaledToFit()
                             .frame(width: 120, height: 150)
-                            .cornerRadius(10)
-                            .foregroundColor(.gray)
-                        Text(piece.image)
-                            .foregroundColor(.black)
                     }
                     Text(piece.title)
                         .padding(.top, 20)
