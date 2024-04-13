@@ -5,16 +5,28 @@
 //  Created by 劉丞恩 on 2024/3/23.
 //
 
+struct MindMapPreview:Identifiable, Equatable {
+    var id = UUID()
+    var title: String
+    var des: String
+    var node: Node
+}
+
 import SwiftUI
 import Observation
 
 struct ChatView: View {
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
+    @State var mindMap = MindMapPreview(title: "心智圖標題", des: "描述你的心智圖內容", node: Node(text: "選擇一個心智圖吧", children: [Node(text: "aaa"), Node(text: "aaa"), Node(text: "aaa")]))
+                                        
     @EnvironmentObject var coordinator: Coordinator
+    
+    @State var curPage:ContentView.PageController = .chat
+    
     var body: some View {
         VStack{
-            ChatingProjectSettingView()
+            ChatingProjectSettingView(curPage: $curPage, mindMap: $mindMap)
             CustomTopTabBar(tabIndex: $tabIndex)
             if tabIndex == 0 {
                 NormalChatView()
@@ -34,7 +46,7 @@ struct ChatView: View {
                     Image(systemName: "square.and.pencil")
                 }
                 .sheet(isPresented: $showEditSheet){
-                    EditSheetView(showEditSheet: $showEditSheet)
+                    EditSheetView(showEditSheet: $showEditSheet, mindMap: $mindMap)
                 }
                 Button{
                     coordinator.push(.addChatRoom)
@@ -105,4 +117,5 @@ struct TabBarButton: View {
 
 #Preview {
     ContentView()
+//    ChatView()
 }

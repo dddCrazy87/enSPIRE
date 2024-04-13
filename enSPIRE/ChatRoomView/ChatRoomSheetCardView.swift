@@ -12,15 +12,22 @@ struct ChatRoomSheetCardView: View {
     @State private var showDetials: Bool = false
     @State private var offset: CGSize = .zero
     @State private var check: Bool = false
+    @State var curPage: ContentView.PageController = .chat
     @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         VStack{
             VStack(alignment: .leading){
                 ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
-                    Rectangle()
+//                    Rectangle()
+//                        .frame(height: 250)
+//                        .foregroundStyle(Color("YellowColor"))
+                    MindMapView(curPage: $curPage, isPreview: true, rootNode: Node(text: "森林咖啡廳", children: [Node(text: "a")]))
                         .frame(height: 250)
-                        .foregroundStyle(Color("YellowColor"))
-                        
+                        .clipped()
+                        .background(Color("YellowColor"))
+                        .cornerRadius(10)
+                        .foregroundColor(.black)
+                        .disabled(true)
                 }
                 VStack(alignment: .leading){
                     Text("森林咖啡廳")

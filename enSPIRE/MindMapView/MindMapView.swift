@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct MindMapView: View {
-    @FocusState var isMessageFocus: Bool
+    
     @Binding var curPage: ContentView.PageController
     @State var isPreview: Bool
+    @ObservedObject var mindMapProjs: MindmapProjs
     
     // rootNode style
     @State private var rootNodeTextSize = 6
@@ -21,6 +22,19 @@ struct MindMapView: View {
     @State private var curScale: CGFloat = 1.0
     @GestureState private var gestureOffset: CGSize = .zero
     @GestureState private var gestureScale: CGFloat = 1.0
+    
+    @FocusState var isMessageFocus: Bool
+    
+    init(curPage: Binding<ContentView.PageController>, isPreview: Bool, mindMapProjs: MindmapProjs, rootNode: Node) {
+            self._curPage = curPage
+            self._isPreview = State(initialValue: isPreview)
+            self.mindMapProjs = mindMapProjs
+            self.rootNode = rootNode
+        }
+        
+    init(curPage: Binding<ContentView.PageController>, isPreview: Bool, rootNode: Node) {
+        self.init(curPage: curPage, isPreview: isPreview, mindMapProjs: MindmapProjs(nodes: []), rootNode: rootNode)
+    }
     
     var body: some View {
         
@@ -87,9 +101,17 @@ struct MindMapView: View {
                         .background(Color.white)
                 }
                 else {
-                    Text(selectedNode?.hintText ?? "選擇一個節點吧！")
-                        .foregroundColor(.black)
-                        .background(Color.white)
+                    if let selectedNode = selectedNode {
+                        let index = selectedNode.children.count
+                        let hintText = selectedNode.hintText[index]
+                        Text(hintText)
+                            .foregroundColor(.black)
+                            .background(Color.white)
+                    } else {
+                        Text("選擇一個節點吧！")
+                            .foregroundColor(.black)
+                            .background(Color.white)
+                    }
                 }
                 
                 Spacer().frame(height: 0)
@@ -160,7 +182,11 @@ struct MindMapView: View {
                                 Text("新增空白專案")
                             }
                             Button {
-                                
+                                mindMapProjs.nodes.append(Node(node: rootNode))
+                                rootNode.children = []
+                                isFirstNode = true
+                                rootNodeTextSize = 6
+                                rootNodeText = "寫下主題吧！"
                             } label: {
                                 Text("儲存專案")
                             }
