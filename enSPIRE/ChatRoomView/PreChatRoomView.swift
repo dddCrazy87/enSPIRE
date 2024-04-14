@@ -11,10 +11,13 @@ struct PreChatRoomView: View {
     var user: UserInfo
     @StateObject var CrossFieldUserListModle = crossFieldUserListModle()
     @StateObject var UserListModle = userListModle()
+    @State var curPage: ContentView.PageController = .chat
     @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         
         VStack{
+            MindMapView(curPage: $curPage, isPreview: true, rootNode: Node(text: "森林咖啡廳", children: [Node(text: "肉桂捲", children: [Node(text: "肉桂拿鐵"), Node(text: "花香")]), Node(text: "悠閒的山林度假村", children: [Node(text: "家人朋友"), Node(text: "觀光小山的觀景區")]), Node(text: "鄉村田園風")]))
+                .disabled(true)
             Spacer()
             VStack(alignment: .leading){
                 Text("森林咖啡廳")

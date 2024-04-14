@@ -1,15 +1,10 @@
 import SwiftUI
 import ImageIO
 
-struct GridItem: Identifiable {
-    var id = UUID()
-    let title: String
-}
-
 struct GridView: View {
     struct Column: Identifiable {
         let id = UUID()
-        var gridItems = [GridItem]()
+        var gridItems = [Pieces]()
     }
     
     var columns = [Column]()
@@ -17,7 +12,7 @@ struct GridView: View {
     let spacing: CGFloat
     let horizontalPadding: CGFloat
     
-    init(gridItems: [GridItem], numberOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10){
+    init(gridItems: [Pieces], numberOfColumns: Int, spacing: CGFloat = 10, horizontalPadding: CGFloat = 10){
         self.spacing = spacing
         self.horizontalPadding = horizontalPadding
         
@@ -27,7 +22,7 @@ struct GridView: View {
         }
         var columnsHeight = Array<CGFloat>(repeating: 0, count: numberOfColumns)
         
-        for gridItem in gridItems {
+        for piece in gridItems {
             var smallestColumnIndex = 0
             var smallestHeight = columnsHeight.first!
             for i in 1 ..< columnsHeight.count {
@@ -37,7 +32,7 @@ struct GridView: View {
                     smallestColumnIndex = i
                 }
             }
-            columns[smallestColumnIndex].gridItems.append(gridItem)
+            columns[smallestColumnIndex].gridItems.append(piece)
             columnsHeight[smallestColumnIndex] += 100
         }
         self.columns = columns
@@ -47,8 +42,8 @@ struct GridView: View {
         HStack(alignment: .top, spacing: spacing){
             ForEach(columns){ column in
                 LazyVStack(spacing: spacing){
-                    ForEach(column.gridItems){ gridItem in
-                        getItemView(gridItem: gridItem)
+                    ForEach(column.gridItems){ piece in
+                        getItemView(gridItem: piece)
                     }
                 }
             }
@@ -56,11 +51,16 @@ struct GridView: View {
         .padding(.horizontal, horizontalPadding)
     }
     
-    func getItemView(gridItem: GridItem) -> some View {
+    func getItemView(gridItem: Pieces) -> some View {
         ZStack {
-            Image(gridItem.title)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            NavigationLink {
+                PiecesView(piecesData: gridItem)
+            } label: {
+                Image(gridItem.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
     }

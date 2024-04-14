@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     enum PageController {
         case login
         case logout
@@ -24,6 +24,8 @@ struct ContentView: View {
     
     private var piecesPjoj = PiecesProjs(pieces: [Pieces(title: "減醣提拉米蘇", auther: "Wayne", image: "demo", description: "這款減醣巧克力蛋糕絕對是任何巧克力愛好者的夢幻之選！每一口都充滿了濃郁的巧克力風味，但卻不含多餘的糖分。這個食譜結合了傳統的巧克力蛋糕與健康意識，是一個完美的選擇，無論是作為特別場合的甜點還是日常享用。", link: "https://cookidoo.tw/recipes/recipe/zh-Hant/r713201")])
     
+    var user:UserInfo = UserInfo(UserId: "111", userName: "Wayne", photo: "")
+    
     var body: some View {
         NavigationStack {
             
@@ -39,7 +41,7 @@ struct ContentView: View {
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .chat:
-                    CoordinatorChatView()
+                    CoordinatorChatView(user: user)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 case .gallery:
