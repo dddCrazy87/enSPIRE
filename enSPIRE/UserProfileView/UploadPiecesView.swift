@@ -10,6 +10,7 @@ struct UploadPiecesView: View {
     @State private var auther = ""
     @State private var description = ""
     @State private var link = ""
+    @FocusState var isMessageFocus: Bool
     
     var body: some View {
         
@@ -52,6 +53,7 @@ struct UploadPiecesView: View {
                 Text("作品名稱：")
                     .bold()
                 TextField("作品名稱", text: $name)
+                    .focused($isMessageFocus)
             }
             .padding(.leading, 30)
             .padding(.top, 20)
@@ -59,6 +61,7 @@ struct UploadPiecesView: View {
             HStack {
                 Text("作者：")
                 TextField("作者", text: $auther)
+                    .focused($isMessageFocus)
             }
             .padding(.leading, 50)
             
@@ -72,6 +75,7 @@ struct UploadPiecesView: View {
             
             TextField("在這裡貼上作品連結", text: $link)
                 .padding(.leading, 50)
+                .focused($isMessageFocus)
             
             HStack {
                 Text("作品概述")
@@ -96,6 +100,7 @@ struct UploadPiecesView: View {
             }
             .padding(.leading, 30)
             .padding(.trailing, 30)
+            .focused($isMessageFocus)
             
             Spacer()
             
@@ -111,6 +116,9 @@ struct UploadPiecesView: View {
         }
         .navigationTitle(name.count == 0 ? "未命名作品" : name)
         .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture {
+            isMessageFocus = false
+        }
     }
 }
 

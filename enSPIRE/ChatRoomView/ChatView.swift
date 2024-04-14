@@ -16,6 +16,7 @@ import SwiftUI
 import Observation
 
 struct ChatView: View {
+    var user: UserInfo
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
     @State var mindMap = MindMapPreview(title: "心智圖標題", des: "描述你的心智圖內容", node: Node(text: "選擇一個心智圖吧", children: [Node(text: "aaa"), Node(text: "aaa"), Node(text: "aaa")]))
@@ -26,7 +27,7 @@ struct ChatView: View {
     
     var body: some View {
         VStack{
-            ChatingProjectSettingView(curPage: $curPage, mindMap: $mindMap)
+            ChatingProjectSettingView(user: user,showEditSheet: $showEditSheet,curPage: $curPage, mindMap: $mindMap)
             CustomTopTabBar(tabIndex: $tabIndex)
             if tabIndex == 0 {
                 NormalChatView()

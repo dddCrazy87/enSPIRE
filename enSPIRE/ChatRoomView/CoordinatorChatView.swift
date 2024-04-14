@@ -10,7 +10,7 @@ import Observation
 
 // Screens that we need to navigate
 enum Screens: Hashable {
-    case chat
+    case chat(user: UserInfo)
     case addChatRoom
     case preChat(user: UserInfo)
     case chatRoom(user: UserInfo)
@@ -24,8 +24,8 @@ class Coordinator: ObservableObject {
     @ViewBuilder
      func build(page: Screens) -> some View {
         switch page {
-        case .chat:
-            ChatView()
+        case .chat(let user):
+            ChatView(user: user)
         case .addChatRoom:
             AddChatRoomSheetView()
         case .preChat(let user):
@@ -53,10 +53,11 @@ class Coordinator: ObservableObject {
 
 struct CoordinatorChatView: View {
     @EnvironmentObject var coordinator : Coordinator
+    var user: UserInfo
     
     var body: some View{
         NavigationStack(path: $coordinator.paths){
-            coordinator.build(page: .chat)
+            coordinator.build(page: .chat(user: user))
                 .navigationDestination(for: Screens.self){ screen in
                     coordinator.build(page: screen)
                 }
