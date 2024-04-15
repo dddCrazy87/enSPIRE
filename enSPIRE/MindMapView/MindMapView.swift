@@ -102,7 +102,8 @@ struct MindMapView: View {
                 }
                 else {
                     if let selectedNode = selectedNode {
-                        let index = selectedNode.children.count
+                        let index = selectedNode.children.count >= selectedNode.hintText.count ? selectedNode.hintText.count-1:selectedNode.children.count
+                        
                         let hintText = selectedNode.hintText[index]
                         Text(hintText)
                             .foregroundColor(.black)

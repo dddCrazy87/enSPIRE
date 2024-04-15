@@ -35,9 +35,10 @@ struct ChatingProjectSettingView: View {
         //                .foregroundStyle(Color.yellow)
         //                .padding(.trailing)
                     MindMapView(curPage: $curPage, isPreview: true, rootNode: mindMap.node)
-                        .frame(width: 120, height: 80)
+                        .frame(width: 160, height: 100)
+                        .background(Color("YellowColor"))
                         .clipped()
-                        .padding(.trailing)
+                        .padding(.trailing, 1)
                         .cornerRadius(10)
                         .foregroundColor(.black)
                         .disabled(true)
@@ -62,3 +63,6 @@ struct ChatingProjectSettingView: View {
     }
 }
 
+#Preview {
+    ContentView()
+}

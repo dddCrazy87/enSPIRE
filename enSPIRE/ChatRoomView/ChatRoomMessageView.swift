@@ -34,8 +34,9 @@ struct ChatRoomMessageView: View {
                 }
                     
             }
-            .padding()
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            
+            Divider()
+            
             HStack{
                 TextField(
                     "Message",
@@ -59,7 +60,6 @@ struct ChatRoomMessageView: View {
             }
             .padding(.horizontal)
         }
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
     }
 }
 
