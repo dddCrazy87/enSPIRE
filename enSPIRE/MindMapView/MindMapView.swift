@@ -163,8 +163,6 @@ struct MindMapView: View {
                         Image(systemName: "paperplane")
                     }
                 }
-                .navigationTitle("聯想室")
-                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Menu {

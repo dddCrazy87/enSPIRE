@@ -36,8 +36,6 @@ struct ChatView: View {
                 CrossFieldChatView()
             }
         }
-        .navigationTitle("討論室")
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar{
             ToolbarItemGroup{

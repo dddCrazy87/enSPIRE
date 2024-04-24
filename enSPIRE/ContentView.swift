@@ -13,6 +13,7 @@ struct ContentView: View {
     }
     
     @State var curPage = PageController.mindmap
+    @State var title = ""
     
     // editing mind map proj
     private var mindMap_editing = Node(text: "root")
@@ -37,21 +38,66 @@ struct ContentView: View {
                 case .logout:
                     Text("logout page")
                 case .mindmap:
-                    MindMapView(curPage: $curPage, isPreview: false, mindMapProjs: mindMapProj, rootNode: mindMap_editing)
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
+                    ZStack {
+                        GalleryView()
+                            .toolbarBackground(.visible, for: .bottomBar)
+                            .toolbarColorScheme(.light, for: .bottomBar)
+                        
+                        Rectangle()
+                            .frame(width: .infinity, height: .infinity)
+                            .foregroundColor(Color.white)
+
+                    
+                        MindMapView(curPage: $curPage, isPreview: false, mindMapProjs: mindMapProj, rootNode: mindMap_editing)
+                            .onAppear(){
+                                title = "聯想室"
+                            }
+                    }
                 case .chat:
-                    CoordinatorChatView(user: user)
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
+                    ZStack {
+                        GalleryView()
+                            .toolbarBackground(.visible, for: .bottomBar)
+                            .toolbarColorScheme(.light, for: .bottomBar)
+                        
+                        Rectangle()
+                            .frame(width: .infinity, height: .infinity)
+                            .foregroundColor(Color.white)
+
+                    
+                        CoordinatorChatView(user: user)
+                            .toolbarBackground(.visible, for: .bottomBar)
+                            .toolbarColorScheme(.light, for: .bottomBar)
+                            .onAppear(){
+                                title = "討論室"
+                            }
+                    }
+                    
                 case .gallery:
                     GalleryView()
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
+                        .onAppear(){
+                            title = "展覽室"
+                        }
                 case .profile:
-                    UserProfileView(userInfo: userInfo, tabIndex: 0, mindmapProj: mindMapProj, piecesProj: piecesPjoj, mindMap_editing: mindMap_editing, curPage: $curPage)
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
+                    ZStack {
+                        GalleryView()
+                            .toolbarBackground(.visible, for: .bottomBar)
+                            .toolbarColorScheme(.light, for: .bottomBar)
+                        
+                        Rectangle()
+                            .frame(width: .infinity, height: .infinity)
+                            .foregroundColor(Color.white)
+
+                    
+                        UserProfileView(userInfo: userInfo, tabIndex: 0, mindmapProj: mindMapProj, piecesProj: piecesPjoj, mindMap_editing: mindMap_editing, curPage: $curPage)
+                            .toolbarBackground(.visible, for: .bottomBar)
+                            .toolbarColorScheme(.light, for: .bottomBar)
+                            .onAppear(){
+                                title = userInfo.userName
+                            }
+                    }
+                    
                 default:
                     Text("error")
                 }
@@ -98,6 +144,8 @@ struct ContentView: View {
                     Spacer()
                 }
             }
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
         }
         .environmentObject(Coordinator())
     }

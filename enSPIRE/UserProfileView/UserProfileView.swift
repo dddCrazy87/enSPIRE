@@ -90,8 +90,6 @@ struct UserProfileView: View {
                 }
                 
             }
-            .navigationTitle(userInfo.userName)
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if isLogin {

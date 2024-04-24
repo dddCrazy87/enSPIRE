@@ -25,8 +25,7 @@ struct GalleryView: View {
             }
             .padding()
         }
-        .navigationTitle("展覽室")
-        .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
     

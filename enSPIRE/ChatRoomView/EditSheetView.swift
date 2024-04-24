@@ -20,7 +20,7 @@ struct EditSheetView: View {
     
     @State var flag = true
     @State var curPage: ContentView.PageController = .chat
-    let mindMap2 = MindMapPreview(title: "適合小孩的點心食譜", des: "這是一個點心食譜", node: Node(text: "適合小孩吃的點心食譜", children: [Node(text: "甜甜的"), Node(text: "下午放學後")]))
+    let mindMap2 = MindMapPreview(title: "適合小孩的點心食譜", des: "這是一個點心食譜", node: Node(text: "小孩的點心食譜", children: [Node(text: "下午放學後"), Node(text: "甜甜的", children: [Node(text: "巧克力"), Node(text: "糖果")])]))
     @Binding var mindMap:MindMapPreview
     
     var body: some View {

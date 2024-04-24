@@ -2,7 +2,7 @@ import Foundation
 
 func generateHint(text: String) -> [String] {
     switch text {
-    case "適合小孩吃的點心食譜":
+    case "小孩的點心食譜":
         return ["點心會在什麼時候享用？", "點心的味道如何？"]
     case "下午放學後":
         return ["你放學後的心情通常是怎樣的？"]
