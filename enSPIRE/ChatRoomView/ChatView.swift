@@ -9,12 +9,13 @@ import SwiftUI
 import Observation
 
 struct ChatView: View {
+    var user: UserInfo
     @State var tabIndex = 0
     @State private var showEditSheet: Bool = false
     @EnvironmentObject var coordinator: Coordinator
     var body: some View {
         VStack{
-            ChatingProjectSettingView()
+            ChatingProjectSettingView(user: user, showEditSheet: $showEditSheet)
             CustomTopTabBar(tabIndex: $tabIndex)
             if tabIndex == 0 {
                 NormalChatView()

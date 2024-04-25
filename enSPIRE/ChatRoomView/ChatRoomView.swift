@@ -36,8 +36,4 @@ struct ChatRoomView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        ChatView()
-    }
-}
+
