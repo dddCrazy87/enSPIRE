@@ -30,7 +30,7 @@ struct LoadingScreeenView: View {
                             .stroke(Color("Yellow2Color"), lineWidth: 10)
                             .frame(width: 150, height: 150)
                             .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
-                            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                            .animation(Animation.linear(duration: 1).repeatForever(), value: CGFloat(0))
                             .onAppear() {
                                 self.isLoading = true
                             }

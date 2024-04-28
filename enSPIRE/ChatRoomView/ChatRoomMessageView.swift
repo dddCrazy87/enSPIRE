@@ -22,7 +22,7 @@ struct ChatRoomMessageView: View {
                             MessageView(message: message)
                                 .id(idx)
                         }
-                        .onChange(of: chatRoomViewModel.messagesData){ newvalue in
+                        .onChange(of: chatRoomViewModel.messagesData, initial: true){ oldvalue, newvalue in
                             withAnimation {
                                 scrollView.scrollTo(chatRoomViewModel.messagesData.count - 1, anchor: .bottom)
                             }
