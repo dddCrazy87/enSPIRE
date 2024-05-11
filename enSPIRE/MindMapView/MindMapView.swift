@@ -19,20 +19,107 @@ struct MindMapView: View {
     // drag & magnification
     @State private var curPos: CGSize = .zero
     @State private var curScale: CGFloat = 1.0
+    @State private var width: CGFloat = 330.0
     @GestureState private var gestureOffset: CGSize = .zero
     @GestureState private var gestureScale: CGFloat = 1.0
     
     var body: some View {
         
-        VStack {
+        ZStack {
+            ZStack{
+                Image("TextField")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: width)
+                    .offset(y: -260)
+                
+                    .onAppear(){
+                        withAnimation(.bouncy(duration: 1.5, extraBounce: 0.05)){
+                            self.width = 350
+                        }
+                    }
+                Button {
+                    nodeText = input
+                    if nodeText != "" {
+                        if isFirstNode {
+                            isFirstNode = false
+                            rootNode.text = nodeText
+                            rootNode.hintText = generateHint(text: nodeText)
+                            rootNodeTextSize = rootNode.text.count
+                            rootNodeText = rootNode.text
+                        }
+                        else {
+                            if let selectedNode = self.selectedNode {
+                                selectedNode.addChild(childText: nodeText)
+                            }
+                        }
+                    }
+                    input = ""
+                    self.selectedNode = nil
+                } label: {
+                    Image("sendButton")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 220)
+                        
+                }
+                .offset(x: 160,y: -320)
+                VStack{
+                    if !isPreview {
+                        if isFirstNode {
+                            Text("首先，寫下一個主題吧！")
+                                .foregroundColor(.white)
+                                .offset(y: 10)
+                        }
+                        else {
+                            Text(selectedNode?.hintText ?? "選擇一個節點吧！")
+                                .foregroundColor(.white)
+                                .offset(y: 10)
+                        }
+                            
+                        
+                        Spacer().frame(height: 0)
+                        
+                        HStack {
+                            TextField("", text: $input, prompt: Text("寫下你的想法...").foregroundStyle(Color.gray))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal)
+                                .frame(width: 200, height: 60)
+                                .focused($isMessageFocus)
+                                .onSubmit {
+                                    nodeText = input
+                                    if nodeText != "" {
+                                        if isFirstNode {
+                                            isFirstNode = false
+                                            rootNode.text = nodeText
+                                            rootNode.hintText = generateHint(text: nodeText)
+                                            rootNodeTextSize = rootNode.text.count
+                                            rootNodeText = rootNode.text
+                                        }
+                                        else {
+                                            if let selectedNode = self.selectedNode {
+                                                selectedNode.addChild(childText: nodeText)
+                                            }
+                                        }
+                                    }
+                                    input = ""
+                                    self.selectedNode = nil
+                                }
+                            
+                        }
+                        .frame(height: 70)
+//                        .border(.white)
+                        .offset(y: 25)
+                    }
+                }
+                .offset(y: -250)
+            }
             
             ZStack {
-                
                 ForEach(rootNode.children) { childNode in
                     LineView(startNode: rootNode, endNode: childNode)
                     NodeLineView(node: childNode)
                 }
-                
                 if isPreview {
                     MindMapNodeView(rootNode: rootNode, selectedNode: $selectedNode, rootNodeText: rootNode.text, rootNodeTextSize: rootNode.text.count, isFirstNode: false)
                         .frame(maxHeight: 10)
@@ -80,103 +167,10 @@ struct MindMapView: View {
             
             Spacer()
             
-            if !isPreview {
-                if isFirstNode {
-                    Text("首先，寫下一個主題吧！")
-                        .foregroundColor(.black)
-                        .background(Color.white)
-                }
-                else {
-                    Text(selectedNode?.hintText ?? "選擇一個節點吧！")
-                        .foregroundColor(.black)
-                        .background(Color.white)
-                }
-                
-                Spacer().frame(height: 0)
-                
-                HStack {
-                    TextField("寫下你的想法...", text: $input)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 250, height: 60)
-                        .focused($isMessageFocus)
-                        .onSubmit {
-                            nodeText = input
-                            if nodeText != "" {
-                                if isFirstNode {
-                                    isFirstNode = false
-                                    rootNode.text = nodeText
-                                    rootNode.hintText = generateHint(text: nodeText)
-                                    rootNodeTextSize = rootNode.text.count
-                                    rootNodeText = rootNode.text
-                                }
-                                else {
-                                    if let selectedNode = self.selectedNode {
-                                        selectedNode.addChild(childText: nodeText)
-                                    }
-                                }
-                            }
-                            input = ""
-                            self.selectedNode = nil
-                        }
-                    Button {
-                        nodeText = input
-                        if nodeText != "" {
-                            if isFirstNode {
-                                isFirstNode = false
-                                rootNode.text = nodeText
-                                rootNode.hintText = generateHint(text: nodeText)
-                                rootNodeTextSize = rootNode.text.count
-                                rootNodeText = rootNode.text
-                            }
-                            else {
-                                if let selectedNode = self.selectedNode {
-                                    selectedNode.addChild(childText: nodeText)
-                                }
-                            }
-                        }
-                        input = ""
-                        self.selectedNode = nil
-                    } label: {
-                        Image(systemName: "paperplane")
-                    }
-                }
-                .navigationTitle("聯想室")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Menu {
-                            
-                            Button {
-                                curPage = .profile
-                            } label: {
-                                Text("選擇現有專案")
-                            }
-                            Button {
-                                rootNode.children = []
-                                isFirstNode = true
-                                rootNodeTextSize = 6
-                                rootNodeText = "寫下主題吧！"
-                            } label: {
-                                Text("新增空白專案")
-                            }
-                            Button {
-                                
-                            } label: {
-                                Text("儲存專案")
-                            }
-                            Button {
-                                
-                            } label: {
-                                Text("另存為PNG")
-                            }
-                            
-                        } label: {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
-                }
-            }
+            
         }
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("BgNight"), Color.black]),startPoint: .top, endPoint: .bottom))
         .onAppear() {
             if rootNode.children.count != 0 {
                 isFirstNode = false
@@ -195,9 +189,6 @@ struct MindMapView: View {
 
 #Preview {
     NavigationStack {
-//        MindMapView(isPreview: false, rootNode: Node(text: "a"))
-//        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "aaa"),Node(text: "aa", children: [Node(text: "aaaa"),Node(text: "a",children: [Node(text: "aaa"),Node(text: "a", children: [Node(text: "aaa")])])])]))
-//        MindMapView(isPreview: false, rootNode: Node(text: "Root", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a"),Node(text: "a", children: [Node(text: "a", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaa", children: [Node(text: "aaaaaaaa", children: [Node(text: "aaaaaaaaaaa")])])])])])])])]),Node(text: "a")]))
         ContentView()
     }
 }

@@ -7,8 +7,6 @@ struct ContentView: View {
         case logout
         case signin
         case mindmap
-        case chat
-        case gallery
         case profile
     }
     
@@ -45,16 +43,9 @@ struct ContentView: View {
                     MindMapView(curPage: $curPage, isPreview: false, rootNode: mindMap_editing)
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
-                case .chat:
-                    CoordinatorChatView(user: user)
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
-                case .gallery:
-                    GalleryView()
-                        .toolbarBackground(.visible, for: .bottomBar)
-                        .toolbarColorScheme(.light, for: .bottomBar)
                 case .profile:
-                    UserProfileView(userInfo: userInfo, tabIndex: 0, mindmapProj: mindMapProj, piecesProj: piecesPjoj, mindMap_editing: mindMap_editing, curPage: $curPage)
+//                    UserProfileView(userInfo: userInfo, tabIndex: 0, mindmapProj: mindMapProj, piecesProj: piecesPjoj, mindMap_editing: mindMap_editing, curPage: $curPage)
+                    UserProfileView()
                         .toolbarBackground(.visible, for: .bottomBar)
                         .toolbarColorScheme(.light, for: .bottomBar)
                 default:
@@ -62,49 +53,30 @@ struct ContentView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Button {
-                        curPage = PageController.mindmap
-                    } label: {
-                        Image("MindmapIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                    }
-                    Spacer()
-                    Button {
-                        curPage = PageController.chat
-                    } label: {
-                        Image("ChatIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                    }
-                    Spacer()
-                    Button {
-                        curPage = PageController.gallery
-                    } label: {
-                        Image("GalleryIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                    }
-                    Spacer()
-                    Button {
-                        curPage = PageController.profile
-                    } label: {
-                        Image("PersonIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                    }
-                    Spacer()
-                }
-            }
+//            .toolbar {
+//                ToolbarItemGroup(placement: .bottomBar) {
+//                    Spacer()
+//                    Button {
+//                        curPage = PageController.mindmap
+//                    } label: {
+//                        Image("MindmapIcon")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 45, height: 45)
+//                    }
+//                    Spacer()
+//                    Button {
+//                        curPage = PageController.profile
+//                    } label: {
+//                        Image("PersonIcon")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 45, height: 45)
+//                    }
+//                    Spacer()
+//                }
+//            }
         }
-        .environmentObject(Coordinator())
     }
 }
 

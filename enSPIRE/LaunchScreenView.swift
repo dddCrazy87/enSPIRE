@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
 struct LaunchScreenView: View {
     @State private var size = 1.0
-    @State private var opacity = 0.9
+    @State private var opacity = 0.0
+    @State private var easeOutOpacity = 1.0
     @State private var isActive = false
-    @State private var color = Color("YellowColor")
-    @State private var backgroundColor = Color("DefaultColor")
     @State private var offset = 0.0
+    @State private var GrassOffsetY = 700
+    @State private var WizardOffsetY = 600
     @State private var fontOffsetX = -300
-    @State private var fontOffsetY = 140
+    @State private var fontOffsetY = 500
     @State private var fontSize = 25
     
     var body: some View {
@@ -25,104 +32,112 @@ struct LaunchScreenView: View {
             ZStack{
                 ZStack{
                     Circle()
-                        .fill()
-                        .frame(width: 160)
-                        .foregroundStyle(color)
-                        .scaleEffect(size)
-                        .offset(y: offset)
-                        .onAppear(){
-                            withAnimation(.easeIn(duration: 2.0).delay(0.3)){
-                                self.color = Color("YellowColor")
-                            }
-                            withAnimation(.spring(duration: 1.0).delay(1.3).speed(1.3)){
-                                self.color = Color("Yellow2Color")
-                                self.size = 1.2
-                                self.offset = -50
-                            }
-                        }
-                    ZStack{
-                        MyShape()
-                    }
-                    .opacity(opacity)
-                    .scaleEffect(size)
-                    .offset(y: offset)
-                    .onAppear(){
-                        withAnimation(.easeOut(duration: 3.6).delay(1.8).speed(1.3)){
-                            self.opacity = 1
-                            self.size = 1.5
-                            self.offset = -100
-                        }
-                        withAnimation(.easeOut(duration: 2.5).delay(3.8).speed(1.3)){
-                            self.opacity = 0
-                            self.size = 1.5
-                            self.offset = -100
-                        }
-                    }
+                        .frame(width: 20)
+                        .offset(x: 100, y: -300)
+                    Circle()
+                        .frame(width: 10)
+                        .offset(x: -50, y: -190)
+                    Circle()
+                        .frame(width: 10)
+                        .offset(x: 10, y: 30)
+                    Circle()
+                        .frame(width: 15)
+                        .offset(x: 130, y: -70)
+                    Circle()
+                        .frame(width: 20)
+                        .offset(x: -130, y: -150)
+                    Circle()
+                        .frame(width: 15)
+                        .offset(x: -80, y: 0)
+                    Circle()
+                        .frame(width: 15)
+                        .offset(x: -90, y: -310)
+                    Circle()
+                        .frame(width: 10)
+                        .offset(x: -170, y: 100)
+                    Circle()
+                        .frame(width: 15)
+                        .offset(x: 85, y: -210)
+                    Circle()
+                        .frame(width: 10)
+                        .offset(x: 165, y: 190)
+                    Circle()
+                        .frame(width: 10)
+                        .offset(x: 120, y: 130)
                 }
-                .scaleEffect(size)
-                .offset(y: offset)
+                .foregroundStyle(Color("YellowStar"))
+                .opacity(Double(opacity))
                 .onAppear(){
-                    withAnimation(.easeOut(duration: 5).delay(0.1)){
-                        self.offset = -23
-                        self.size = 0.85
+                    withAnimation(.easeIn(duration: 2).delay(3).speed(1)){
+                        self.opacity = 0.9
                     }
+                    withAnimation(.easeIn(duration: 1).delay(5)){
+                        self.opacity = 0.3
+                    }
+                    withAnimation(.easeIn(duration: 1).delay(6)){
+                        self.opacity = 0.9
+                    }
+                    withAnimation(.easeIn(duration: 2).delay(7)){
+                        self.opacity = 0
+                    }
+                        
                 }
-                Text("enSPIRE")
-                    .offset(x: CGFloat(fontOffsetX), y: CGFloat(fontOffsetY))
-                    .font(.system(size: CGFloat(fontSize), weight: .bold))
-                    .opacity(opacity)
+                
+                Circle()
+                    .fill(
+                        LinearGradient(gradient: Gradient(colors: [Color("LightGrass"), Color("NightGrass")]),startPoint: .top, endPoint: .init(x: 0.5, y: 0.4)))
+                    .frame(width: 500)
+                    .offset(x: 0, y: CGFloat(GrassOffsetY))
+                    .opacity(easeOutOpacity)
                     .onAppear(){
                         withAnimation(.bouncy(duration: 1.5, extraBounce: 0.05).delay(1).speed(2)){
-                            self.fontOffsetX = 15
-                            self.fontSize = 35
+                            self.GrassOffsetY = 500
                         }
-                        withAnimation(.linear(duration: 3).delay(1.4).speed(0.8)){
-                            self.opacity = 0.3
-                            self.fontOffsetX = -3
-                            self.fontOffsetY = -20
-                            self.fontSize = 12
+                        withAnimation(.easeIn(duration: 2).delay(7)){
+                            self.easeOutOpacity = 0
                         }
                     }
+                Image("Wizard")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300)
+                    .offset(y: CGFloat(WizardOffsetY))
+                    .opacity(easeOutOpacity)
+                    .onAppear(){
+                        withAnimation(.bouncy(duration: 1.5, extraBounce: 0.05).delay(2).speed(2)){
+                            self.WizardOffsetY = 180
+                        }
+                        
+                    }
+                Text("Stella")
+                    .foregroundStyle(.white)
+                    .offset(x: CGFloat(0), y: CGFloat(fontOffsetY))
+                    .font(.system(size: CGFloat(fontSize), weight: .bold))
+                    .opacity(easeOutOpacity)
+                    .onAppear(){
+                        withAnimation(.bouncy(duration: 2, extraBounce: 0.05).delay(3).speed(2)){
+                            self.fontOffsetY = -70
+                            self.fontSize = 50
+                        }
+                    }
+                
         
                 
             }
-            .background(backgroundColor)
+            .frame(height: UIScreen.screenHeight)
+            .background(LinearGradient(gradient: Gradient(colors: [Color("BgNight"), Color.black]),startPoint: .top, endPoint: .bottom))
             .onAppear{
-                withAnimation(.easeInOut(duration: 2).delay(3).speed(1.3)){
-                    self.backgroundColor = Color.white.opacity(0)
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.4){
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 9){
                     self.isActive = true
                 }
             }
         }
+        
     }
 }
 
-struct MyShape : Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.move(to: CGPoint(x: 120, y: 445))
-        p.addQuadCurve(to: CGPoint(x: 170, y: 410), control: CGPoint(x: 155, y: 440))
-        p.move(to: CGPoint(x: 170, y: 410))
-        p.addQuadCurve(to: CGPoint(x: 171, y: 365), control: CGPoint(x: 150, y: 370))
-        p.move(to: CGPoint(x: 170, y: 410))
-        p.addQuadCurve(to: CGPoint(x: 170, y: 365), control: CGPoint(x: 190, y: 370))
-        p.move(to: CGPoint(x: 170, y: 410))
-        p.addQuadCurve(to: CGPoint(x: 210, y: 420), control: CGPoint(x: 185, y: 430))
-        p.move(to: CGPoint(x: 210, y: 420))
-        p.addQuadCurve(to: CGPoint(x: 221, y: 365), control: CGPoint(x: 200, y: 370))
-        p.move(to: CGPoint(x: 210, y: 420))
-        p.addQuadCurve(to: CGPoint(x: 220, y: 365), control: CGPoint(x: 250, y: 370))
-        p.move(to: CGPoint(x: 210, y: 420))
-        p.addQuadCurve(to: CGPoint(x: 250, y: 450), control: CGPoint(x: 230, y: 450))
 
-        return p.strokedPath(.init(lineWidth: 6))
-    }
-
-
-
-}
 
 #Preview {
     LaunchScreenView()
